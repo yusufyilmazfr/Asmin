@@ -4,4 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Asmin.DataAccess\Asmin.DataAccess.csproj" />
+    <ProjectReference Include="..\Asmin.Entities\Asmin.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
