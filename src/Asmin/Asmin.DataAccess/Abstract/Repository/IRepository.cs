@@ -9,14 +9,14 @@ namespace Asmin.DataAccess.Abstract.Repository
     public interface IRepository<T> where T : BaseEntity
     {
         T GetById(int id);
-        Task<T> GetByIdAsync(int id);
         List<T> GetList();
+        bool Add(T entity);
+        bool Update(T entity);
+        bool Remove(T entity);
+        Task<T> GetByIdAsync(int id);
         Task<List<T>> GetListAsync();
-        T Add(T entity);
-        Task<T> AddAsnyc(T entity);
-        T Update(T entity);
-        Task<T> UpdateAsnyc(T entity);
-        T Remove(T entity);
-        Task<T> RemoveAsnyc(T entity);
+        Task<bool> AddAsnyc(T entity);
+        Task<bool> UpdateAsnyc(T entity);
+        Task<bool> RemoveAsnyc(T entity);
     }
 }

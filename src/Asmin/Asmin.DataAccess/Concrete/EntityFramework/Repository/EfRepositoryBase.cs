@@ -13,18 +13,16 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
         where TEntity : BaseEntity
         where TContext : DbContext, new()
     {
-        public TEntity Add(TEntity entity)
+        public bool Add(TEntity entity)
         {
             using (var context = new TContext())
             {
                 context.Attach(entity).State = EntityState.Added;
-                context.SaveChanges();
-
-                return entity;
+                return context.SaveChanges() > 0;
             }
         }
 
-        public Task<TEntity> AddAsnyc(TEntity entity)
+        public Task<bool> AddAsnyc(TEntity entity)
         {
             return Task.Run(() => { return Add(entity); });
         }
@@ -55,30 +53,30 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
             return Task.Run(() => { return GetList(); });
         }
 
-        public TEntity Remove(TEntity entity)
+        public bool Remove(TEntity entity)
         {
             using (var context = new TContext())
             {
                 context.Attach(entity).State = EntityState.Deleted;
-                return entity;
+                return context.SaveChanges() > 0;
             }
         }
 
-        public Task<TEntity> RemoveAsnyc(TEntity entity)
+        public Task<bool> RemoveAsnyc(TEntity entity)
         {
             return Task.Run(() => { return Remove(entity); });
         }
 
-        public TEntity Update(TEntity entity)
+        public bool Update(TEntity entity)
         {
             using (var context = new TContext())
             {
                 context.Attach(entity).State = EntityState.Modified;
-                return entity;
+                return context.SaveChanges() > 0;
             }
         }
 
-        public Task<TEntity> UpdateAsnyc(TEntity entity)
+        public Task<bool> UpdateAsnyc(TEntity entity)
         {
             return Task.Run(() => { return Update(entity); });
         }
