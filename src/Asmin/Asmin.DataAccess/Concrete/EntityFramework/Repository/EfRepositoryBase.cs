@@ -17,6 +17,9 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
         {
             using (var context = new TContext())
             {
+                entity.CreatedDate = DateTime.Now;
+                entity.ModifiedDate = DateTime.Now;
+
                 context.Attach(entity).State = EntityState.Added;
                 return context.SaveChanges() > 0;
             }
@@ -71,6 +74,8 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
         {
             using (var context = new TContext())
             {
+                entity.ModifiedDate = DateTime.Now;
+
                 context.Attach(entity).State = EntityState.Modified;
                 return context.SaveChanges() > 0;
             }
