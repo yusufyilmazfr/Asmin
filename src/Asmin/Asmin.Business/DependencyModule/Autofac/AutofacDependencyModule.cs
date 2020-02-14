@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Asmin.Business.DependencyModule.Autofac
 {
-    public class AutofacModule : Module
+    public class AutofacDependencyModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
