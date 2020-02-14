@@ -1718,6 +1718,16 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Asmin.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Asmin.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Asmin.Core.dll": {}
+        }
+      },
       "Asmin.DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -6182,6 +6192,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Asmin.Core/1.0.0": {
+      "type": "project",
+      "path": "../Asmin.Core/Asmin.Core.csproj",
+      "msbuildProject": "../Asmin.Core/Asmin.Core.csproj"
+    },
     "Asmin.DataAccess/1.0.0": {
       "type": "project",
       "path": "../Asmin.DataAccess/Asmin.DataAccess.csproj",
@@ -6195,6 +6210,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Asmin.Core >= 1.0.0",
       "Asmin.DataAccess >= 1.0.0",
       "Asmin.Entities >= 1.0.0",
       "Autofac.Extensions.DependencyInjection >= 6.0.0",
@@ -6231,6 +6247,9 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
+            "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj": {
+              "projectPath": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj"
+            },
             "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.DataAccess\\Asmin.DataAccess.csproj": {
               "projectPath": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.DataAccess\\Asmin.DataAccess.csproj"
             },

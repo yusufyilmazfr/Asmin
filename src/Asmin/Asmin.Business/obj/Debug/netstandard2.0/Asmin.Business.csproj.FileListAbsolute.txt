@@ -11,3 +11,5 @@ D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Business\bin\Debug\netstandard2.0\
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Business\bin\Debug\netstandard2.0\Asmin.DataAccess.pdb
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Business\bin\Debug\netstandard2.0\Asmin.Entities.pdb
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Business\obj\Debug\netstandard2.0\Asmin.Business.csproj.CopyComplete
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Business\bin\Debug\netstandard2.0\Asmin.Core.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Business\bin\Debug\netstandard2.0\Asmin.Core.pdb
