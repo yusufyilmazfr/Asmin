@@ -128,3 +128,5 @@ D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asm
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asmin.Business.pdb
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asmin.DataAccess.pdb
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asmin.Entities.pdb
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asmin.Core.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asmin.Core.pdb

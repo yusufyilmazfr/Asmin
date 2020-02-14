@@ -2508,6 +2508,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Asmin.Core": "1.0.0",
           "Asmin.DataAccess": "1.0.0",
           "Asmin.Entities": "1.0.0",
           "Autofac.Extensions.DependencyInjection": "6.0.0"
@@ -2517,6 +2518,16 @@
         },
         "runtime": {
           "bin/placeholder/Asmin.Business.dll": {}
+        }
+      },
+      "Asmin.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Asmin.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Asmin.Core.dll": {}
         }
       },
       "Asmin.DataAccess/1.0.0": {
@@ -8173,6 +8184,11 @@
       "type": "project",
       "path": "../Asmin.Business/Asmin.Business.csproj",
       "msbuildProject": "../Asmin.Business/Asmin.Business.csproj"
+    },
+    "Asmin.Core/1.0.0": {
+      "type": "project",
+      "path": "../Asmin.Core/Asmin.Core.csproj",
+      "msbuildProject": "../Asmin.Core/Asmin.Core.csproj"
     },
     "Asmin.DataAccess/1.0.0": {
       "type": "project",

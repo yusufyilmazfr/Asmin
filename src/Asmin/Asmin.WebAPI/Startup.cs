@@ -32,7 +32,7 @@ namespace Asmin.WebAPI
             //
             // You must have the call to `UseServiceProviderFactory(new AutofacServiceProviderFactory())`
             // when building the host or this won't be called.
-            builder.RegisterModule(new AutofacModule());
+            builder.RegisterModule(new AutofacDependencyModule());
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
