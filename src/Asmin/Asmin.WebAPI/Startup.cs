@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Asmin.Business.DependencyModule.Autofac;
+using Asmin.Business.DependencyModules.Autofac;
+using Asmin.Core.DependencyModules;
+using Asmin.Core.Extensions;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,8 +40,12 @@ namespace Asmin.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+
+            services.RegisterDependencyModules(new ICoreModule[]
+            {
+                new MemoryCacheModule()
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
