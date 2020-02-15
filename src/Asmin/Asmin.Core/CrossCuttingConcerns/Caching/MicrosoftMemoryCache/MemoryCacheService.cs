@@ -17,7 +17,6 @@ namespace Asmin.Core.CrossCuttingConcerns.Caching.MicrosoftMemoryCache
         public MemoryCacheService(IMemoryCache cache)
         {
             _cache = cache;
-            //_cache = DependencyServiceTool.ServiceProvider.GetService<IMemoryCache>();
         }
 
         public void Add(string key, object data, int timeout)
@@ -55,6 +54,22 @@ namespace Asmin.Core.CrossCuttingConcerns.Caching.MicrosoftMemoryCache
 
         public void RemoveByPattern(string pattern)
         {
+            var cacheEntriesCollectionInfo = typeof(MemoryCache)
+                .GetProperty("EntriesCollection", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            var cacheEntriesCollection = cacheEntriesCollectionInfo.GetValue(_cache) as dynamic;
+
+            Regex regex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.IgnoreCase);
+
+            foreach (var cacheEntry in cacheEntriesCollection)
+            {
+                var key = cacheEntry.GetType().GetProperty("Key").GetValue(cacheEntry);
+
+                if (regex.IsMatch(key))
+                {
+                    RemoveByKey(key);
+                }
+            }
 
         }
     }
