@@ -1,4 +1,5 @@
 ﻿using Asmin.Business.Abstract;
+using Asmin.Core.Aspects.Autofac.Caching;
 using Asmin.Core.Constants.Messages;
 using Asmin.Core.CrossCuttingConcerns.Caching;
 using Asmin.Core.Utilities.Result;
@@ -8,6 +9,7 @@ using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,6 +63,7 @@ namespace Asmin.Business.Concrete
             return new SuccessDataResult<List<User>>(users);
         }
 
+        [CacheAspect]
         public async Task<IDataResult<List<User>>> GetListAsync()
         {
             var users = await _userDal.GetListAsync();
