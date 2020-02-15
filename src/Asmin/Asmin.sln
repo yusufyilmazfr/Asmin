@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Services", "2-Services", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Application", "3-Application", "{B113E3E4-22A8-4B13-B422-2FC000F97F9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Entities", "Asmin.Entities\Asmin.Entities.csproj", "{29A5D47E-945B-47E3-998F-DA56F49B64C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.Entities", "Asmin.Entities\Asmin.Entities.csproj", "{29A5D47E-945B-47E3-998F-DA56F49B64C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.DataAccess", "Asmin.DataAccess\Asmin.DataAccess.csproj", "{73B03256-CCD8-4D1F-BFD3-C08487DB244E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.DataAccess", "Asmin.DataAccess\Asmin.DataAccess.csproj", "{73B03256-CCD8-4D1F-BFD3-C08487DB244E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Business", "Asmin.Business\Asmin.Business.csproj", "{A1CDA522-C5E5-452A-9DBD-AFC5842B9526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.Business", "Asmin.Business\Asmin.Business.csproj", "{A1CDA522-C5E5-452A-9DBD-AFC5842B9526}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Core", "Asmin.Core\Asmin.Core.csproj", "{697FB2E5-29A0-4D03-A93E-E5D5576E8D98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.Core", "Asmin.Core\Asmin.Core.csproj", "{697FB2E5-29A0-4D03-A93E-E5D5576E8D98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.WebAPI", "Asmin.WebAPI\Asmin.WebAPI.csproj", "{3543A1CD-E3B2-4661-9753-49855BD54D0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.WebAPI", "Asmin.WebAPI\Asmin.WebAPI.csproj", "{3543A1CD-E3B2-4661-9753-49855BD54D0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

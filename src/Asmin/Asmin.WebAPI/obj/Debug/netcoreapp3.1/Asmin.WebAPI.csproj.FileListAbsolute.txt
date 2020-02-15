@@ -130,3 +130,9 @@ D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asm
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asmin.Entities.pdb
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asmin.Core.dll
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Asmin.Core.pdb
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\obj\Debug\netcoreapp3.1\Asmin.WebAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Autofac.Extras.DynamicProxy.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Castle.Core.dll
