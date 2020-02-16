@@ -15,9 +15,10 @@ namespace Asmin.Core.Utilities.Interceptor
         {
             bool isSuccess = true;
 
+            OnBefore(invocation);
             try
             {
-                OnBefore(invocation);
+                invocation.Proceed();
             }
             catch (Exception e)
             {

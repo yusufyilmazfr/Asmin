@@ -11,17 +11,18 @@ namespace Asmin.Core.Utilities.Interceptor
     {
         public IInterceptor[] SelectInterceptors(Type type, MethodInfo method, IInterceptor[] interceptors)
         {
-            var methodAttributes = type.GetMethod(method.Name)
-                    .GetCustomAttributes<MethodInterceptionBaseAttribute>(true)
-                    .ToList();
-
             var classAttributes = type
                 .GetCustomAttributes<MethodInterceptionBaseAttribute>(true)
                 .ToList();
 
-            methodAttributes.AddRange(classAttributes);
+            var methodAttributes = type
+            .GetMethod(method.Name)
+            .GetCustomAttributes<MethodInterceptionBaseAttribute>(true)
+            .ToList();
 
-            return methodAttributes.OrderBy(i => i.Priority).ToArray();
+            classAttributes.AddRange(methodAttributes);
+
+            return classAttributes.OrderBy(i => i.Priority).ToArray();
         }
     }
 }
