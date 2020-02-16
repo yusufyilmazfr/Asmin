@@ -4,6 +4,92 @@
     "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.DataAccess\\Asmin.DataAccess.csproj": {}
   },
   "projects": {
+    "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj",
+        "projectName": "Asmin.Core",
+        "projectPath": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj",
+        "packagesPath": "C:\\Users\\Yusuf\\.nuget\\packages\\",
+        "outputPath": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Autofac.Extras.DynamicProxy": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.CSharp": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "Microsoft.Extensions.Caching.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.DataAccess\\Asmin.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -30,6 +116,9 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
+              "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj": {
+                "projectPath": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj"
+              },
               "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Entities\\Asmin.Entities.csproj": {
                 "projectPath": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Entities\\Asmin.Entities.csproj"
               }

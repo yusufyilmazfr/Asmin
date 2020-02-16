@@ -9,3 +9,5 @@ D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.DataAccess\bin\Debug\netstandard2.
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.DataAccess\obj\Debug\netstandard2.0\Asmin.DataAccess.csproj.CopyComplete
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.DataAccess\obj\Debug\netstandard2.0\Asmin.DataAccess.dll
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.DataAccess\obj\Debug\netstandard2.0\Asmin.DataAccess.pdb
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.DataAccess\bin\Debug\netstandard2.0\Asmin.Core.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.DataAccess\bin\Debug\netstandard2.0\Asmin.Core.pdb

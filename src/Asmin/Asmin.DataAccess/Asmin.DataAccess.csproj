@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Asmin.Core\Asmin.Core.csproj" />
     <ProjectReference Include="..\Asmin.Entities\Asmin.Entities.csproj" />
   </ItemGroup>
 
