@@ -22,7 +22,7 @@ namespace Asmin.Core.Aspects.Autofac.Caching
             _cacheService = DependencyServiceTool.ServiceProvider.GetService<ICacheService>();
         }
 
-        public override void OnBefore(IInvocation invocation)
+        public override void Intercept(IInvocation invocation)
         {
             //fullname contains namespace with method name
             var fullName = $"{invocation.Method.ReflectedType.FullName}.{invocation.Method.Name}";
