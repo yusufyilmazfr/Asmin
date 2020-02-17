@@ -1,4 +1,5 @@
 ﻿using Asmin.Business.Abstract;
+using Asmin.Core.Aspects.Autofac.Authorization;
 using Asmin.Core.Aspects.Autofac.Caching;
 using Asmin.Core.Aspects.Autofac.Logging;
 using Asmin.Core.Aspects.Autofac.Transaction;
@@ -25,8 +26,9 @@ namespace Asmin.Business.Concrete
             _userValidator = userValidator;
         }
 
-        [CacheRemoveAspect("IUserManager.Get")]
-        [LogAspect(typeof(FileLogger))] 
+        [AuthorizationAspect("IUserManager.AddAsync", Priority = 1)]
+        [LogAspect(typeof(FileLogger), Priority = 2)]
+        [CacheRemoveAspect("IUserManager.Get", Priority = 3)]
         public async Task<IResult> AddAsync(User user)
         {
             var validationResult = _userValidator.Validate(user);
@@ -50,6 +52,7 @@ namespace Asmin.Business.Concrete
 
         [CacheAspect]
         [LogAspect(typeof(FileLogger))]
+        [AuthorizationAspect("IUserManager.GetListAsync")]
         public async Task<IDataResult<List<User>>> GetListAsync()
         {
             var users = await _userDal.GetListAsync();
