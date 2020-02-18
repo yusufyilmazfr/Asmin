@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Asmin.Business.Abstract;
-using Asmin.Entities.Concrete;
+using Asmin.Core.Entities.Concrete;
+using Asmin.Core.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,6 +53,16 @@ namespace Asmin.WebAPI.Controllers
         [Route("Add")]
         public async Task<IActionResult> Add(User user)
         {
+            var claims = new List<Claim>();
+            //claims.AddRole("IUserManager.AddAsync");
+            claims.AddRole("xIUserManager.AddAsync");
+
+            var claimsIdentity = new ClaimsIdentity(claims);
+
+            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+            HttpContext.User = claimsPrincipal;
+
             var checkIfUserAdded = await _userManager.AddAsync(user);
 
             if (!checkIfUserAdded.IsSuccess)
@@ -87,6 +99,12 @@ namespace Asmin.WebAPI.Controllers
             }
 
             return Ok(checkUserIsRemoved.Message);
+        }
+        [HttpGet]
+        [Route("test")]
+        public void TransactionalTestMethod()
+        {
+            _userManager.TransactionalTestMethod();
         }
     }
 }

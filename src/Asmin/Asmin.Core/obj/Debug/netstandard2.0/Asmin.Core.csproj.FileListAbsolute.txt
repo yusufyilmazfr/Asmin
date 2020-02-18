@@ -1,8 +1,8 @@
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Core\bin\Debug\netstandard2.0\Asmin.Core.deps.json
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Core\bin\Debug\netstandard2.0\Asmin.Core.dll
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Core\bin\Debug\netstandard2.0\Asmin.Core.pdb
-D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Core\obj\Debug\netstandard2.0\Asmin.Core.csprojAssemblyReference.cache
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Core\obj\Debug\netstandard2.0\Asmin.Core.AssemblyInfoInputs.cache
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Core\obj\Debug\netstandard2.0\Asmin.Core.AssemblyInfo.cs
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Core\obj\Debug\netstandard2.0\Asmin.Core.dll
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Core\obj\Debug\netstandard2.0\Asmin.Core.pdb
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.Core\obj\Debug\netstandard2.0\Asmin.Core.csprojAssemblyReference.cache

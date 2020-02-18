@@ -121,6 +121,10 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.CSharp": {
               "target": "Package",
               "version": "[4.7.0, )"
@@ -146,6 +150,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.8, )"
             }
           },
           "imports": [
@@ -188,6 +196,9 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
+              "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj": {
+                "projectPath": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj"
+              },
               "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Entities\\Asmin.Entities.csproj": {
                 "projectPath": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Entities\\Asmin.Entities.csproj"
               }

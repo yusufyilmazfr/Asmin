@@ -1,4 +1,4 @@
-﻿using Asmin.Entities.Concrete;
+﻿using Asmin.Core.Entities.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;

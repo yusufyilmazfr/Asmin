@@ -136,3 +136,5 @@ D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Flu
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\obj\Debug\netcoreapp3.1\Asmin.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Autofac.Extras.DynamicProxy.dll
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Castle.Core.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\log4net.config
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\log4net.dll
