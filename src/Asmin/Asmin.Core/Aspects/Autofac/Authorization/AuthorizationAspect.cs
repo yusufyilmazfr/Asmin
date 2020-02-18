@@ -1,5 +1,6 @@
 ﻿using Asmin.Core.Constants.Messages;
 using Asmin.Core.Extensions;
+using Asmin.Core.Utilities.Exceptions;
 using Asmin.Core.Utilities.Interceptor;
 using Asmin.Core.Utilities.IoC;
 using Castle.DynamicProxy;
@@ -42,8 +43,7 @@ namespace Asmin.Core.Aspects.Autofac.Authorization
                 }
             }
 
-
-            throw new Exception(AspectMessages.AuthorizeDenied);
+            throw new AuthorizationException(AspectMessages.AuthorizeDenied);
         }
     }
 }

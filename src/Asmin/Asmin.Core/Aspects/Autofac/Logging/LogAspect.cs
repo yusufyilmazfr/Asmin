@@ -1,6 +1,7 @@
 ﻿using Asmin.Core.Constants.Messages;
 using Asmin.Core.CrossCuttingConcerns.Logging;
 using Asmin.Core.CrossCuttingConcerns.Logging.Log4Net;
+using Asmin.Core.Utilities.Exceptions;
 using Asmin.Core.Utilities.Interceptor;
 using Castle.DynamicProxy;
 using System;
@@ -17,7 +18,7 @@ namespace Asmin.Core.Aspects.Autofac.Logging
         {
             if (loggerServiceType.BaseType != typeof(LoggerServiceBase))
             {
-                throw new System.Exception(AspectMessages.WrongLoggerType);
+                throw new AspectException(AspectMessages.WrongLoggerType);
             }
 
             _loggerServiceBase = (LoggerServiceBase)Activator.CreateInstance(loggerServiceType);

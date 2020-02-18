@@ -18,7 +18,7 @@ namespace Asmin.Core.Aspects.Autofac.Transaction
                     invocation.Proceed();
                     scope.Complete();
                 }
-                catch (Exception ex)
+                catch (System.Exception ex)
                 {
                     scope.Dispose();
                     throw ex;

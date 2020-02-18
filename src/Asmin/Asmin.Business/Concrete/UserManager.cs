@@ -1,6 +1,7 @@
 ﻿using Asmin.Business.Abstract;
 using Asmin.Core.Aspects.Autofac.Authorization;
 using Asmin.Core.Aspects.Autofac.Caching;
+using Asmin.Core.Aspects.Autofac.Exception;
 using Asmin.Core.Aspects.Autofac.Logging;
 using Asmin.Core.Aspects.Autofac.Transaction;
 using Asmin.Core.Constants.Messages;
@@ -26,9 +27,10 @@ namespace Asmin.Business.Concrete
             _userValidator = userValidator;
         }
 
-        [AuthorizationAspect("IUserManager.AddAsync", Priority = 1)]
-        [LogAspect(typeof(FileLogger), Priority = 2)]
-        [CacheRemoveAspect("IUserManager.Get", Priority = 3)]
+        [ExceptionAspect(Priority = 1)]
+        [AuthorizationAspect("IUserManager.AddAsync", Priority = 2)]
+        [LogAspect(typeof(FileLogger), Priority = 3)]
+        [CacheRemoveAspect("IUserManager.Get", Priority = 4)]
         public async Task<IResult> AddAsync(User user)
         {
             var validationResult = _userValidator.Validate(user);
@@ -50,9 +52,9 @@ namespace Asmin.Business.Concrete
             return new SuccessDataResult<User>(user);
         }
 
+        [ExceptionAspect]
         [CacheAspect]
         [LogAspect(typeof(FileLogger))]
-        [AuthorizationAspect("IUserManager.GetListAsync")]
         public async Task<IDataResult<List<User>>> GetListAsync()
         {
             var users = await _userDal.GetListAsync();
@@ -71,7 +73,8 @@ namespace Asmin.Business.Concrete
             return new SuccessResult(ResultMessages.UserUpdated);
         }
 
-        [AsminUnitOfWorkAspect]
+        [ExceptionAspect(Priority = 1)]
+        [AsminUnitOfWorkAspect(Priority = 2)]
         public void TransactionalTestMethod()
         {
             User user1 = new User
