@@ -7,8 +7,10 @@ using Asmin.Core.Aspects.Autofac.Transaction;
 using Asmin.Core.Constants.Messages;
 using Asmin.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Asmin.Core.Entities.Concrete;
+using Asmin.Core.Extensions;
 using Asmin.Core.Utilities.Result;
 using Asmin.DataAccess.Abstract;
+using Asmin.Entities.DTO;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -27,10 +29,10 @@ namespace Asmin.Business.Concrete
             _userValidator = userValidator;
         }
 
-        [ExceptionAspect(Priority = 1)]
-        [AuthorizationAspect("IUserManager.AddAsync", Priority = 2)]
-        [LogAspect(typeof(FileLogger), Priority = 3)]
-        [CacheRemoveAspect("IUserManager.Get", Priority = 4)]
+        [ExceptionAspect]
+        [AuthorizationAspect("IUserManager.AddAsync")]
+        [LogAspect(typeof(FileLogger))]
+        [CacheRemoveAspect("IUserManager.Get")]
         public async Task<IResult> AddAsync(User user)
         {
             var validationResult = _userValidator.Validate(user);
@@ -73,8 +75,8 @@ namespace Asmin.Business.Concrete
             return new SuccessResult(ResultMessages.UserUpdated);
         }
 
-        [ExceptionAspect(Priority = 1)]
-        [AsminUnitOfWorkAspect(Priority = 2)]
+        [ExceptionAspect]
+        [AsminUnitOfWorkAspect]
         public void TransactionalTestMethod()
         {
             User user1 = new User
@@ -93,6 +95,12 @@ namespace Asmin.Business.Concrete
 
             _userDal.Add(user1);
             _userDal.Add(user2);
+        }
+
+        public async Task<IDataResult<User>> Login(UserLoginDto user)
+        {
+            var tempUser = await _userDal.GetAsync(i => i.Email == user.Email && i.Password == user.Password);
+            return new SuccessDataResult<User>(tempUser.WithoutPassword());
         }
     }
 }

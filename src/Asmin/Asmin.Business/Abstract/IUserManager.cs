@@ -1,5 +1,6 @@
 ﻿using Asmin.Core.Entities.Concrete;
 using Asmin.Core.Utilities.Result;
+using Asmin.Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Asmin.Business.Abstract
 {
     public interface IUserManager
     {
+        Task<IDataResult<User>> Login(UserLoginDto user);
         Task<IDataResult<User>> GetByIdAsync(int id);
         Task<IDataResult<List<User>>> GetListAsync();
         Task<IResult> AddAsync(User user);
