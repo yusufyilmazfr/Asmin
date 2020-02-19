@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,19 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
         public Task<bool> AddAsnyc(TEntity entity)
         {
             return Task.Run(() => { return Add(entity); });
+        }
+
+        public TEntity Get(Expression<Func<TEntity, bool>> filter)
+        {
+            using (var context = new TContext())
+            {
+                return context.Set<TEntity>().FirstOrDefault(filter);
+            }
+        }
+
+        public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            return Task.Run(() => { return Get(filter); });
         }
 
         public TEntity GetById(int id)
