@@ -9,7 +9,7 @@ namespace Asmin.Core.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void RegisterDependencyModules(this IServiceCollection services, ICoreModule[] modules)
+        public static void AddDependencyModules(this IServiceCollection services, ICoreModule[] modules)
         {
             foreach (ICoreModule module in modules)
             {
