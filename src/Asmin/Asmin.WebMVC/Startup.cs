@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Asmin.Business.DependencyModules.Autofac;
 using Asmin.Core.DependencyModules;
 using Asmin.Core.Extensions;
+using Asmin.WebMVC.Services.Session;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,14 +39,25 @@ namespace Asmin.WebMVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
             services.AddControllersWithViews();
 
-            services.RegisterDependencyModules(new ICoreModule[]
+            services.AddDependencyModules(new ICoreModule[]
             {
-                new MemoryCacheModule()
+                new MemoryCacheModule(),
+                new MD5HashModule()
             });
+
+            services.AddSingleton<ISessionService, SessionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,11 +68,14 @@ namespace Asmin.WebMVC
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMVCExceptionMiddleware("i will be write error page url. :)");
+            //app.UseMVCExceptionMiddleware("i will be write error page url. :)");
+
 
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
