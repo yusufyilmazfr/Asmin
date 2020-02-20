@@ -8,6 +8,7 @@ using Asmin.Core.Constants.Messages;
 using Asmin.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Asmin.Core.Entities.Concrete;
 using Asmin.Core.Extensions;
+using Asmin.Core.Utilities.Hash;
 using Asmin.Core.Utilities.Result;
 using Asmin.DataAccess.Abstract;
 using Asmin.Entities.DTO;
@@ -22,11 +23,13 @@ namespace Asmin.Business.Concrete
     public class UserManager : IUserManager
     {
         private IUserDal _userDal;
+        private IHashService _hashService;
         private IValidator<User> _userValidator;
-        public UserManager(IUserDal userDal, IValidator<User> userValidator)
+        public UserManager(IUserDal userDal, IValidator<User> userValidator, IHashService hashService)
         {
             _userDal = userDal;
             _userValidator = userValidator;
+            _hashService = hashService;
         }
 
         [ExceptionAspect]
@@ -35,6 +38,8 @@ namespace Asmin.Business.Concrete
         [CacheRemoveAspect("IUserManager.Get")]
         public async Task<IResult> AddAsync(User user)
         {
+            user.Password = _hashService.CreateHash(user.Password);
+
             var validationResult = _userValidator.Validate(user);
 
             if (!validationResult.IsValid)
@@ -99,8 +104,11 @@ namespace Asmin.Business.Concrete
 
         public async Task<IDataResult<User>> Login(UserLoginDto user)
         {
-            var tempUser = await _userDal.GetAsync(i => i.Email == user.Email && i.Password == user.Password);
-            return new SuccessDataResult<User>(tempUser.WithoutPassword());
+            var hashedPassword = _hashService.CreateHash(user.Password);
+
+            var tempUser = await _userDal.GetAsync(i => i.Email == user.Email && i.Password == hashedPassword);
+
+            return new SuccessDataResult<User>(tempUser?.WithoutPassword());
         }
     }
 }
