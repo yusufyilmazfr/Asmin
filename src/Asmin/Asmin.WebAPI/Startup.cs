@@ -46,7 +46,7 @@ namespace Asmin.WebAPI
 
             services.AddControllers();
 
-            services.RegisterDependencyModules(new ICoreModule[]
+            services.AddDependencyModules(new ICoreModule[]
             {
                 new MemoryCacheModule()
             });
