@@ -16,10 +16,12 @@ namespace Asmin.DataAccess.Abstract.Repository
         bool Add(T entity);
         bool Update(T entity);
         bool Remove(T entity);
+        int GetCount();
         Task<T> GetByIdAsync(int id);
         Task<List<T>> GetListAsync();
         Task<bool> AddAsnyc(T entity);
         Task<bool> UpdateAsnyc(T entity);
         Task<bool> RemoveAsnyc(T entity);
+        Task<int> GetCountAsync();
     }
 }

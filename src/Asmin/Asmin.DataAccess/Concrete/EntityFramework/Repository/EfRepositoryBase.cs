@@ -57,6 +57,22 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
             return Task.Run(() => { return GetById(id); });
         }
 
+        public int GetCount()
+        {
+            using (TContext context = new TContext())
+            {
+                return context.Set<TEntity>().Count();
+            }
+        }
+
+        public Task<int> GetCountAsync()
+        {
+            return Task.Run(() =>
+            {
+                return GetCount();
+            });
+        }
+
         public List<TEntity> GetList()
         {
             using (var context = new TContext())
