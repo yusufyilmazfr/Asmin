@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Asmin.Business.DependencyModules.Autofac;
 using Asmin.Core.DependencyModules;
 using Asmin.Core.Extensions;
+using Asmin.WebMVC.Extensions;
 using Asmin.WebMVC.Services.Session;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
@@ -68,8 +69,6 @@ namespace Asmin.WebMVC
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseMVCExceptionMiddleware("i will be write error page url. :)");
-
 
             app.UseHttpsRedirection();
 
@@ -77,7 +76,14 @@ namespace Asmin.WebMVC
 
             app.UseSession();
 
+            //app.UseMVCExceptionMiddleware("i will be write error page url. :)");
+
             app.UseRouting();
+
+            app.UseWhen(context => context.Request.Path.StartsWithSegments("/admin") == false, appBuilder =>
+            {
+                appBuilder.UseIncomingVisitorCounter();
+            });
 
             app.UseMvc(routes =>
             {
