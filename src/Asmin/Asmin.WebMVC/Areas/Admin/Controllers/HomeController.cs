@@ -6,6 +6,7 @@ using Asmin.Business.Abstract;
 using Asmin.Core.Entities.Concrete;
 using Asmin.Entities.DTO;
 using Asmin.WebMVC.Constants;
+using Asmin.WebMVC.Filters;
 using Asmin.WebMVC.Services.Session;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,7 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
     {
         private IUserManager _userManager;
         private ISessionService _sessionService;
-
+        public User CurrentUser => _sessionService.GetObject<User>(SessionKey.CURRENT_USER);
 
         public HomeController(IUserManager userManager, ISessionService sessionService)
         {
@@ -24,14 +25,19 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
             _sessionService = sessionService;
         }
 
+        [CheckSessionFilter]
         public IActionResult Index()
         {
-            ViewBag.CurrentUser = _sessionService.GetObject<User>(SessionKey.CURRENT_USER);
             return View();
         }
 
         public IActionResult Login()
         {
+            if (CurrentUser != null)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
 
@@ -55,6 +61,12 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
             _sessionService.SetObject(SessionKey.CURRENT_USER, checkUser.Data);
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Logout()
+        {
+            _sessionService.Remove(SessionKey.CURRENT_USER);
+            return RedirectToAction("Login");
         }
     }
 }
