@@ -110,5 +110,11 @@ namespace Asmin.Business.Concrete
 
             return new SuccessDataResult<User>(tempUser?.WithoutPassword());
         }
+
+        public async Task<IDataResult<int>> GetCountAsync()
+        {
+            var usersCount = await _userDal.GetCountAsync();
+            return new SuccessDataResult<int>(usersCount);
+        }
     }
 }
