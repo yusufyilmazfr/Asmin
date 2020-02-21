@@ -24,12 +24,14 @@ namespace Asmin.Business.DependencyModules.Autofac
             #region Data Access Dependency Registration
 
             builder.RegisterType<EfUserDal>().As<IUserDal>();
+            builder.RegisterType<EfIncomingVisitorDal>().As<IIncomingVisitorDal>().SingleInstance();
 
             #endregion
 
             #region Business Dependency Registration
 
             builder.RegisterType<UserManager>().As<IUserManager>();
+            builder.RegisterType<IncomingVisitorManager>().As<IIncomingVisitorManager>().SingleInstance();
             builder.RegisterType<UserValidator>().As<IValidator<User>>();
 
             #endregion
