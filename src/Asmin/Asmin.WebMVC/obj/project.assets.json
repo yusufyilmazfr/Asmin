@@ -2994,6 +2994,9 @@
       "Asmin.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Asmin.Core": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Asmin.Entities.dll": {}
         },

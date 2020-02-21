@@ -268,7 +268,11 @@
         },
         "frameworks": {
           "netstandard2.0": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj": {
+                "projectPath": "D:\\Program Files\\GitHub\\Asmin\\src\\Asmin\\Asmin.Core\\Asmin.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

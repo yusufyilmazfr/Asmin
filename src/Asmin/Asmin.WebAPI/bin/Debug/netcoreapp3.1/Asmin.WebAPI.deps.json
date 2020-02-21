@@ -2429,6 +2429,9 @@
         }
       },
       "Asmin.Entities/1.0.0": {
+        "dependencies": {
+          "Asmin.Core": "1.0.0"
+        },
         "runtime": {
           "Asmin.Entities.dll": {}
         },
