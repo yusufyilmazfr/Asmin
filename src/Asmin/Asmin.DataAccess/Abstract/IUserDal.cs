@@ -8,6 +8,6 @@ namespace Asmin.DataAccess.Abstract
 {
     public interface IUserDal : IRepository<User>
     {
-
+        List<OperationClaim> GetClaimsByUserId(int id);
     }
 }

@@ -18,5 +18,6 @@ namespace Asmin.Business.Abstract
         Task<IResult> RemoveAsync(User user);
         Task<IDataResult<int>> GetCountAsync();
         void TransactionalTestMethod();
+        IDataResult<List<OperationClaim>> GetClaimsByUserId(int id);
     }
 }

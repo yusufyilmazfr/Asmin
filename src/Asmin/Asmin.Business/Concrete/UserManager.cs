@@ -60,8 +60,9 @@ namespace Asmin.Business.Concrete
         }
 
         [ExceptionAspect]
-        [CacheAspect]
+        [AuthorizationAspect("IUserManager.GetListAsync")]
         [LogAspect(typeof(FileLogger))]
+        [CacheAspect]
         public async Task<IDataResult<List<User>>> GetListAsync()
         {
             var users = await _userDal.GetListAsync();
@@ -115,6 +116,12 @@ namespace Asmin.Business.Concrete
         {
             var usersCount = await _userDal.GetCountAsync();
             return new SuccessDataResult<int>(usersCount);
+        }
+
+        public IDataResult<List<OperationClaim>> GetClaimsByUserId(int id)
+        {
+            var claims = _userDal.GetClaimsByUserId(id);
+            return new SuccessDataResult<List<OperationClaim>>(claims);
         }
     }
 }
