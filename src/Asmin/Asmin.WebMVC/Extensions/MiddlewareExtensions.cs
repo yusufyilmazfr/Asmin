@@ -13,5 +13,9 @@ namespace Asmin.WebMVC.Extensions
         {
             builder.UseMiddleware<IncomingVisitorCounter>();
         }
+        public static void UseUserClaimsCarrierMiddleware(this IApplicationBuilder builder)
+        {
+            builder.UseMiddleware<UserClaimsCarrierMiddleware>();
+        }
     }
 }
