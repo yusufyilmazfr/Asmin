@@ -32,11 +32,11 @@
                                         <td>@user.FirstName @user.LastName</td>
                                         <td>@user.Email</td>
                                         <td>
-                                            <i class="ti-pencil"></i>
+                                            <i class="ti-pencil" onclick="showUpdatesMessage()"></i>
                                             &nbsp;
                                             &nbsp;
                                             &nbsp;
-                                            <i class="ti-trash"></i>
+                                            <i class="ti-trash" onclick="showUpdatesMessage()"></i>
                                         </td>
                                     </tr>
                                 }
@@ -49,3 +49,9 @@
     </div>
     <!-- table primary end -->
 </div>
+
+<script>
+    const showUpdatesMessage = () => {
+        alert("I will be fix this soon, follow the updates  :)");
+    }
+</script>

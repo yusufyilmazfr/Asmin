@@ -14,5 +14,10 @@ namespace Asmin.WebMVC.Controllers
         {
             return View();
         }
+
+        public IActionResult Error()
+        {
+            return View();
+        }
     }
 }
