@@ -29,7 +29,7 @@
 - [Custom Exception Middleware](#custom-exception-middleware "Custom Exception Middleware")
 	 - [Web Exception Middleware](#web-exception-middleware "Web Exception Middleware")
 	 - [API Exception Middleware](#api-exception-middleware "API Exception Middleware")
-	 
+- [Admin Panel UI Design](#admin-panel-ui-design "Admin Panel UI Design")	 
 	 
 
 ### Connection String
@@ -259,6 +259,9 @@ public async Task<IResult> AddAsync(User user)
 	return new SuccessResult(ResultMessages.UserAdded);
 }
 ```
+
+The path information of the file where the log records written is located in the <code>Log4Net.config</code> file. If you want change to path, go <code>Log4Net.config</code>
+
 #### How Do  Write Custom Aspect
 
 The Aspects described above may be insufficient according to your business needs or you may want to write something else. What you need to do here is derive the class you are creating from <code>MethodInterception</code>
@@ -271,7 +274,7 @@ public class CustomAspect : MethodInterception
 }
 ```
 
-When deriving from <code>MethodInterceptor</code>, make sure <code>using Admin.Core.Utilities.Interceptor</code> is written.
+When deriving from <code>MethodInterceptor</code>, make sure <code>using Asmin.Core.Utilities.Interceptor</code> is written.
 
 After defining the class, we can operate it at any time operationally. There are processes that can be override. These; <code>OnBefore</code>, <code>OnAfter</code>, <code>OnSuccess</code>, <code>OnException</code>, <code>Intercept</code>
 
@@ -400,6 +403,12 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 If you want, you can look at the details in the middleware. For this you should go to <code>Asmin.Core.Utilities.Middleware</code> namespace
+
+#### Admin Panel UI Design
+
+[SRTdash Admin Dashboard](https://github.com/puikinsh/srtdash-admin-dashboard "SRTdash Admin Dashboard") was used in the admin page designs. You can check the [GitHub](https://github.com/puikinsh/srtdash-admin-dashboard "GitHub") repository for documentation and other pages.
+
+
 
 **Over time, this place will be further elaborated. ⌛⌛**
 
