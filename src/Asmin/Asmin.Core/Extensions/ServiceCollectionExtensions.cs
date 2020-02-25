@@ -18,5 +18,10 @@ namespace Asmin.Core.Extensions
 
             DependencyServiceTool.CreateServiceProvider(services);
         }
+
+        public static void AddDependencyModules(this IServiceCollection services)
+        {
+            DependencyServiceTool.CreateServiceProvider(services);
+        }
     }
 }
