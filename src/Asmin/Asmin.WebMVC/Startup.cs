@@ -68,15 +68,12 @@ namespace Asmin.WebMVC
             {
                 app.UseDeveloperExceptionPage();
             }
-
-
+            
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
 
             app.UseSession();
-
-            //app.UseMVCExceptionMiddleware("i will be write error page url. :)");
 
             app.UseRouting();
 
@@ -84,6 +81,10 @@ namespace Asmin.WebMVC
             {
                 appBuilder.UseIncomingVisitorCounter();
             });
+
+            app.UseUserClaimsCarrierMiddleware();
+
+            app.UseMVCExceptionMiddleware("/Home/Error");
 
             app.UseMvc(routes =>
             {
