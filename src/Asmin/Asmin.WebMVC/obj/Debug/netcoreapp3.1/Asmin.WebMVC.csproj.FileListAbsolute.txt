@@ -433,3 +433,4 @@ D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebMVC\obj\Debug\netcoreapp3.1\Raz
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\Components\IncomingVisitors\Default.cshtml.g.cs
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebMVC\bin\Debug\netcoreapp3.1\log4net.config
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebMVC\obj\Debug\netcoreapp3.1\Razor\Views\Home\Error.cshtml.g.cs

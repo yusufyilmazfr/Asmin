@@ -53,16 +53,6 @@ namespace Asmin.WebAPI.Controllers
         [Route("Add")]
         public async Task<IActionResult> Add(User user)
         {
-            var claims = new List<Claim>();
-            //claims.AddRole("IUserManager.AddAsync");
-            claims.AddRole("xIUserManager.AddAsync");
-
-            var claimsIdentity = new ClaimsIdentity(claims);
-
-            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
-            HttpContext.User = claimsPrincipal;
-
             var checkIfUserAdded = await _userManager.AddAsync(user);
 
             if (!checkIfUserAdded.IsSuccess)

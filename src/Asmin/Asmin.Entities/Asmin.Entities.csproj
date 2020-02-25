@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\" />
+    <ProjectReference Include="..\Asmin.Core\Asmin.Core.csproj" />
   </ItemGroup>
 
 </Project>
