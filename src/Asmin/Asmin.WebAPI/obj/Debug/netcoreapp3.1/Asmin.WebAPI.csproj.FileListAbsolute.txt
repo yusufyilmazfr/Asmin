@@ -138,3 +138,12 @@ D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Aut
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Castle.Core.dll
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\log4net.config
 D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\log4net.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\Pipelines.Sockets.Unofficial.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\StackExchange.Redis.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Program Files\GitHub\Asmin\src\Asmin\Asmin.WebAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
