@@ -48,6 +48,7 @@ namespace Asmin.WebAPI
 
             services.AddDependencyModules(new ICoreModule[]
             {
+                new MD5HashModule(),
                 new MemoryCacheModule()
             });
 
