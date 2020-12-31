@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Asmin.Core.Configuration.Context;
+using Asmin.Core.Configuration.Environment;
 
 namespace Asmin.Core.Extensions
 {
@@ -17,11 +19,23 @@ namespace Asmin.Core.Extensions
             }
 
             DependencyServiceTool.CreateServiceProvider(services);
+            RegisterRequiredDependencies(services);
         }
 
         public static void AddDependencyModules(this IServiceCollection services)
         {
             DependencyServiceTool.CreateServiceProvider(services);
+            RegisterRequiredDependencies(services);
+        }
+
+        /// <summary>
+        /// Register required services
+        /// </summary>
+        /// <param name="services"></param>
+        private static void RegisterRequiredDependencies(IServiceCollection services)
+        {
+            services.AddSingleton<IEnvironmentService, EnvironmentService>();
+            services.AddSingleton<IAsminConfigurationContext, AsminConfigurationContext>();
         }
     }
 }
