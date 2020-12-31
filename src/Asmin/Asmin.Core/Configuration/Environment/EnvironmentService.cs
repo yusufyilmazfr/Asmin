@@ -23,7 +23,6 @@ namespace Asmin.Core.Configuration.Environment
 
         public IConfiguration Configuration => _configuration;
 
-
         private void SetConfiguration()
         {
             if (_configuration == null)

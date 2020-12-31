@@ -13,5 +13,12 @@ namespace Asmin.Core.Configuration.Context
         int RedisPort { get; set; }
         string RedisUsername { get; set; }
         string RedisPassword { get; set; }
+
+
+
+        string RabbitMQHost { get; set; }
+        int RabbitMQPort { get; set; }
+        string RabbitMQUsername { get; set; }
+        string RabbitMQPassword { get; set; }
     }
 }
