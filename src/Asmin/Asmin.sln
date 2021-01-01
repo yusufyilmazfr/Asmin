@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.WebMVC", "Asmin.WebMV
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Packages", "4-Packages", "{87B73EF3-3AED-4FE4-9F2A-79759AF682E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Packages.RabbitMQ", "Asmin.Packages.RabbitMQ\Asmin.Packages.RabbitMQ.csproj", "{5245289A-FADB-4D26-911C-8669E811CB20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.Packages.RabbitMQ", "Asmin.Packages.RabbitMQ\Asmin.Packages.RabbitMQ.csproj", "{5245289A-FADB-4D26-911C-8669E811CB20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Packages.Cachings.Redis", "Asmin.Packages.Cachings.Redis\Asmin.Packages.Cachings.Redis.csproj", "{CA03D3BC-DAA0-480B-9F62-6B847A76CD3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{5245289A-FADB-4D26-911C-8669E811CB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5245289A-FADB-4D26-911C-8669E811CB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5245289A-FADB-4D26-911C-8669E811CB20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA03D3BC-DAA0-480B-9F62-6B847A76CD3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA03D3BC-DAA0-480B-9F62-6B847A76CD3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA03D3BC-DAA0-480B-9F62-6B847A76CD3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA03D3BC-DAA0-480B-9F62-6B847A76CD3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{3543A1CD-E3B2-4661-9753-49855BD54D0E} = {99A691EF-3D59-427A-BDB0-A4E811F3EFFC}
 		{15807136-4254-4021-98EC-CC98356B86F6} = {E2DD35C1-DE9A-40E5-9B10-D1A72A6C40FE}
 		{5245289A-FADB-4D26-911C-8669E811CB20} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
+		{CA03D3BC-DAA0-480B-9F62-6B847A76CD3B} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B8973CD-3F42-4F38-BDE7-5CC5F12C8B22}
