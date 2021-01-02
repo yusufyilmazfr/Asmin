@@ -14,11 +14,13 @@ namespace Asmin.Core.Configuration.Context
         string RedisUsername { get; set; }
         string RedisPassword { get; set; }
 
-
-
         string RabbitMQHost { get; set; }
         int RabbitMQPort { get; set; }
         string RabbitMQUsername { get; set; }
         string RabbitMQPassword { get; set; }
+
+        string MinIOEndPoint { get; set; }
+        string MinIOAccessKey { get; set; }
+        string MinIOSecretKey { get; set; }
     }
 }

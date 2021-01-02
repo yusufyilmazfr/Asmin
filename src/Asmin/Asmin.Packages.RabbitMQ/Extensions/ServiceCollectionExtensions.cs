@@ -17,7 +17,7 @@ namespace Asmin.Packages.RabbitMQ.Extensions
         /// Extension method for IServiceCollection
         /// </summary>
         /// <returns></returns>
-        public static IServiceCollection AddRabbitMQ(this IServiceCollection services, RabbitMQConfiguration configuration)
+        public static IServiceCollection AddRabbitMQ(this IServiceCollection services, Func<RabbitMQConfiguration> configuration)
         {
             services.AddSingleton(typeof(IRabbitMQConfiguration), configuration);
 

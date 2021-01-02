@@ -18,6 +18,10 @@ namespace Asmin.Core.Configuration.Context
         public string RabbitMQUsername { get; set; }
         public string RabbitMQPassword { get; set; }
 
+        public string MinIOEndPoint { get; set; }
+        public string MinIOAccessKey { get; set; }
+        public string MinIOSecretKey { get; set; }
+
         public AsminConfigurationContext(IEnvironmentService environmentService)
         {
             RedisHost = environmentService.Configuration["Redis:Host"];
@@ -29,6 +33,10 @@ namespace Asmin.Core.Configuration.Context
             RabbitMQPort = int.Parse(environmentService.Configuration["RabbitMQ:Port"]);
             RabbitMQUsername = environmentService.Configuration["RabbitMQ:Username"];
             RabbitMQPassword = environmentService.Configuration["RabbitMQ:Password"];
+
+            MinIOEndPoint = environmentService.Configuration["MinIO:EndPoint"];
+            MinIOAccessKey = environmentService.Configuration["MinIO:AccessKey"];
+            MinIOSecretKey = environmentService.Configuration["MinIO:SecretKey"];
         }
     }
 }
