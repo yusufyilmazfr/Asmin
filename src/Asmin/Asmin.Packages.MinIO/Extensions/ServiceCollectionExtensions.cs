@@ -17,11 +17,12 @@ namespace Asmin.Packages.MinIO.Extensions
         /// Register Asmin.Packages.MinIO package dependencies.
         /// </summary>
         /// <returns></returns>
-        public static IServiceCollection AddMinIO(this IServiceCollection services, MinIOConfiguration configuration)
+        public static IServiceCollection AddMinIO(this IServiceCollection services, Func<MinIOConfiguration> configuration)
         {
-            services.AddSingleton(typeof(IMinIOConfiguration), configuration);
+            services.AddSingleton(typeof(IMinIOConfiguration), configuration.Invoke());
 
             services.AddSingleton<IMinIOClientFactory, MinIOClientFactory>();
+
             services.AddSingleton<IMinIOService, MinIOService>();
 
             return services;
