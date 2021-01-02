@@ -34,7 +34,7 @@ namespace Asmin.Packages.MinIO.Service
         /// <returns></returns>
         Task<bool> BucketExistsAsync(string bucketName);
         /// <summary>
-        /// Create an async task for listing buckets.
+        /// Create an async task for list of bucket.
         /// </summary>
         /// <returns></returns>
         Task<ListAllMyBucketsResult> GetBucketListAsync();
