@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Asmin.Business.Extensions;
 using Asmin.Core.DependencyModules;
 using Asmin.Core.Extensions;
+using Asmin.Packages.AOP.InterceptModule;
 using Asmin.WebMVC.Extensions;
 using Asmin.WebMVC.Services.Session;
 using Autofac;
@@ -33,7 +34,12 @@ namespace Asmin.WebMVC
             // You must have the call to `UseServiceProviderFactory(new AutofacServiceProviderFactory())`
             // when building the host or this won't be called.
 
-            //builder.RegisterModule();
+            var executingAssembly = System.Reflection.Assembly.LoadFrom("..\\Asmin.Business\\bin\\Debug\\netcoreapp3.1\\Asmin.Business.dll");
+            var interceptorModule = new AutofacInterceptorModule();
+
+            interceptorModule.Load(executingAssembly);
+
+            builder.RegisterModule(interceptorModule);
         }
 
         public IConfiguration Configuration { get; }

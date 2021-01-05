@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Asmin.Business.Extensions;
 using Asmin.Core.DependencyModules;
 using Asmin.Core.Extensions;
+using Asmin.Packages.AOP.InterceptModule;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,7 +38,7 @@ namespace Asmin.WebAPI
             // You must have the call to `UseServiceProviderFactory(new AutofacServiceProviderFactory())`
             // when building the host or this won't be called.
 
-            //builder.RegisterModule();
+            builder.RegisterModule(new AutofacInterceptorModule());
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
