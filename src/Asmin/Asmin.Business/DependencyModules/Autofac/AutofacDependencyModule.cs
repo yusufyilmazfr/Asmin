@@ -2,7 +2,6 @@
 using Asmin.Business.Concrete;
 using Asmin.Business.ValidationRules.FluentValidation;
 using Asmin.Core.Entities.Concrete;
-using Asmin.Core.Utilities.Interceptor;
 using Asmin.DataAccess.Abstract;
 using Asmin.DataAccess.Concrete.EntityFramework;
 using Autofac;
@@ -33,21 +32,6 @@ namespace Asmin.Business.DependencyModules.Autofac
             builder.RegisterType<UserManager>().As<IUserManager>();
             builder.RegisterType<IncomingVisitorManager>().As<IIncomingVisitorManager>().SingleInstance();
             builder.RegisterType<UserValidator>().As<IValidator<User>>();
-
-            #endregion
-
-            #region Register Assembly
-
-            var executingAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-
-            builder.RegisterAssemblyTypes(executingAssembly)
-                 .Where(type => !type.Name.EndsWith("Validator"))
-                 .AsImplementedInterfaces()
-                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
-                 {
-                     Selector = new AspectInterceptorSelector()
-                 })
-                 .SingleInstance();
 
             #endregion
         }

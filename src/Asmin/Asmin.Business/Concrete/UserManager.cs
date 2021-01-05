@@ -1,9 +1,4 @@
 ﻿using Asmin.Business.Abstract;
-using Asmin.Core.Aspects.Autofac.Authorization;
-using Asmin.Core.Aspects.Autofac.Caching;
-using Asmin.Core.Aspects.Autofac.Exception;
-using Asmin.Core.Aspects.Autofac.Logging;
-using Asmin.Core.Aspects.Autofac.Transaction;
 using Asmin.Core.Constants.Messages;
 using Asmin.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Asmin.Core.Entities.Concrete;
@@ -32,10 +27,6 @@ namespace Asmin.Business.Concrete
             _hashService = hashService;
         }
 
-        [ExceptionAspect]
-        [AuthorizationAspect("IUserManager.AddAsync")]
-        [LogAspect(typeof(FileLogger))]
-        [CacheRemoveAspect("IUserManager.Get")]
         public async Task<IResult> AddAsync(User user)
         {
             user.Password = _hashService.CreateHash(user.Password);
@@ -52,17 +43,12 @@ namespace Asmin.Business.Concrete
             return new SuccessResult(ResultMessages.UserAdded);
         }
 
-        [CacheAspect]
         public async Task<IDataResult<User>> GetByIdAsync(int id)
         {
             var user = await _userDal.GetByIdAsync(id);
             return new SuccessDataResult<User>(user);
         }
 
-        [ExceptionAspect]
-        [AuthorizationAspect("IUserManager.GetListAsync")]
-        [LogAspect(typeof(FileLogger))]
-        [CacheAspect]
         public async Task<IDataResult<List<User>>> GetListAsync()
         {
             var users = await _userDal.GetListAsync();
@@ -81,8 +67,6 @@ namespace Asmin.Business.Concrete
             return new SuccessResult(ResultMessages.UserUpdated);
         }
 
-        [ExceptionAspect]
-        [AsminUnitOfWorkAspect]
         public void TransactionalTestMethod()
         {
             User user1 = new User
