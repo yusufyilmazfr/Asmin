@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Asmin.Business.DependencyModules.Autofac;
+using Asmin.Business.Extensions;
 using Asmin.Core.DependencyModules;
 using Asmin.Core.Extensions;
 using Asmin.WebMVC.Extensions;
@@ -32,7 +32,8 @@ namespace Asmin.WebMVC
             //
             // You must have the call to `UseServiceProviderFactory(new AutofacServiceProviderFactory())`
             // when building the host or this won't be called.
-            builder.RegisterModule(new AutofacDependencyModule());
+
+            //builder.RegisterModule();
         }
 
         public IConfiguration Configuration { get; }
@@ -59,6 +60,10 @@ namespace Asmin.WebMVC
             });
 
             services.AddSingleton<ISessionService, SessionService>();
+
+            // Register business module. 🎉
+
+            services.AddBusinessModule();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +73,7 @@ namespace Asmin.WebMVC
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
