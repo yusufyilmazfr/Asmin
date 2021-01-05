@@ -1,18 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Asmin.Core\Asmin.Core.csproj" />
     <ProjectReference Include="..\Asmin.DataAccess\Asmin.DataAccess.csproj" />
     <ProjectReference Include="..\Asmin.Entities\Asmin.Entities.csproj" />
+    <ProjectReference Include="..\Asmin.Packages.AOP\Asmin.Packages.AOP.csproj" />
   </ItemGroup>
 
 </Project>
