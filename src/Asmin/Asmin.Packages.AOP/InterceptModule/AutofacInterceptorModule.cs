@@ -22,7 +22,6 @@ namespace Asmin.Packages.AOP.InterceptModule
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(_assembly)
-                .Where(type => type.Name.EndsWith("Manager"))
                 .AsImplementedInterfaces()
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
                 {
