@@ -10,8 +10,14 @@ using System.Threading.Tasks;
 
 namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
 {
-    public class EfRepositoryBase<TEntity, TContext> : IRepository<TEntity>
-        where TEntity : BaseEntity
+    /// <summary>
+    /// Generic repository base.
+    /// </summary>
+    /// <typeparam name="TEntity">TEntity is database entity.</typeparam>
+    /// <typeparam name="TKey">Unique key of TEntity.</typeparam>
+    /// <typeparam name="TContext">TContext is DbContext.</typeparam>
+    public class EfRepositoryBase<TEntity, TKey, TContext> : IRepository<TEntity, TKey>
+        where TEntity : BaseEntity<TKey>
         where TContext : DbContext, new()
     {
         public bool Add(TEntity entity)
@@ -26,35 +32,33 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
             }
         }
 
-        public Task<bool> AddAsnyc(TEntity entity)
-        {
-            return Task.Run(() => { return Add(entity); });
-        }
-
-        public TEntity Get(Expression<Func<TEntity, bool>> filter)
+        public async Task<bool> AddAsync(TEntity entity)
         {
             using (var context = new TContext())
             {
-                return context.Set<TEntity>().FirstOrDefault(filter);
+                entity.CreatedDate = DateTime.Now;
+                entity.ModifiedDate = DateTime.Now;
+
+                context.Attach(entity).State = EntityState.Added;
+
+                return await context.SaveChangesAsync() > 0;
             }
         }
 
-        public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
-        {
-            return Task.Run(() => { return Get(filter); });
-        }
-
-        public TEntity GetById(int id)
+        public TEntity GetById(TKey id)
         {
             using (var context = new TContext())
             {
-                return context.Set<TEntity>().FirstOrDefault(i => i.Id == id);
+                return context.Set<TEntity>().FirstOrDefault(entity => entity.Id.Equals(id));
             }
         }
 
-        public Task<TEntity> GetByIdAsync(int id)
+        public Task<TEntity> GetByIdAsync(TKey id)
         {
-            return Task.Run(() => { return GetById(id); });
+            using (var context = new TContext())
+            {
+                return context.Set<TEntity>().FirstOrDefaultAsync(entity => entity.Id.Equals(id));
+            }
         }
 
         public int GetCount()
@@ -67,10 +71,10 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
 
         public Task<int> GetCountAsync()
         {
-            return Task.Run(() =>
+            using (TContext context = new TContext())
             {
-                return GetCount();
-            });
+                return context.Set<TEntity>().CountAsync();
+            }
         }
 
         public List<TEntity> GetList()
@@ -83,7 +87,10 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
 
         public Task<List<TEntity>> GetListAsync()
         {
-            return Task.Run(() => { return GetList(); });
+            using (var context = new TContext())
+            {
+                return context.Set<TEntity>().ToListAsync();
+            }
         }
 
         public bool Remove(TEntity entity)
@@ -95,9 +102,13 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
             }
         }
 
-        public Task<bool> RemoveAsnyc(TEntity entity)
+        public async Task<bool> RemoveAsync(TEntity entity)
         {
-            return Task.Run(() => { return Remove(entity); });
+            using (var context = new TContext())
+            {
+                context.Attach(entity).State = EntityState.Deleted;
+                return await context.SaveChangesAsync() > 0;
+            }
         }
 
         public bool Update(TEntity entity)
@@ -111,9 +122,16 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
             }
         }
 
-        public Task<bool> UpdateAsnyc(TEntity entity)
+        public async Task<bool> UpdateAsync(TEntity entity)
         {
-            return Task.Run(() => { return Update(entity); });
+            using (var context = new TContext())
+            {
+                entity.ModifiedDate = DateTime.Now;
+
+                context.Attach(entity).State = EntityState.Modified;
+
+                return await context.SaveChangesAsync() > 0;
+            }
         }
     }
 }
