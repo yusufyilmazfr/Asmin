@@ -7,6 +7,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Asmin.Core.Configuration.Context;
+using Asmin.DataAccess.Concrete.EntityFramework.Context;
 
 namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
 {
@@ -15,14 +17,19 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
     /// </summary>
     /// <typeparam name="TEntity">TEntity is database entity.</typeparam>
     /// <typeparam name="TKey">Unique key of TEntity.</typeparam>
-    /// <typeparam name="TContext">TContext is DbContext.</typeparam>
-    public class EfRepositoryBase<TEntity, TKey, TContext> : IRepository<TEntity, TKey>
+    public class EfRepositoryBase<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : BaseEntity<TKey>
-        where TContext : DbContext, new()
     {
+        private readonly string _connectionString;
+
+        public EfRepositoryBase(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+
         public bool Add(TEntity entity)
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
                 entity.CreatedDate = DateTime.Now;
                 entity.ModifiedDate = DateTime.Now;
@@ -34,7 +41,7 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
 
         public async Task<bool> AddAsync(TEntity entity)
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
                 entity.CreatedDate = DateTime.Now;
                 entity.ModifiedDate = DateTime.Now;
@@ -47,55 +54,55 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
 
         public TEntity GetById(TKey id)
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
                 return context.Set<TEntity>().FirstOrDefault(entity => entity.Id.Equals(id));
             }
         }
 
-        public Task<TEntity> GetByIdAsync(TKey id)
+        public async Task<TEntity> GetByIdAsync(TKey id)
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
-                return context.Set<TEntity>().FirstOrDefaultAsync(entity => entity.Id.Equals(id));
+                return await context.Set<TEntity>().FirstOrDefaultAsync(entity => entity.Id.Equals(id));
             }
         }
 
         public int GetCount()
         {
-            using (TContext context = new TContext())
+            using (AsminDbContext context = new AsminDbContext(_connectionString))
             {
                 return context.Set<TEntity>().Count();
             }
         }
 
-        public Task<int> GetCountAsync()
+        public async Task<int> GetCountAsync()
         {
-            using (TContext context = new TContext())
+            using (AsminDbContext context = new AsminDbContext(_connectionString))
             {
-                return context.Set<TEntity>().CountAsync();
+                return await context.Set<TEntity>().CountAsync();
             }
         }
 
         public List<TEntity> GetList()
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
                 return context.Set<TEntity>().ToList();
             }
         }
 
-        public Task<List<TEntity>> GetListAsync()
+        public async Task<List<TEntity>> GetListAsync()
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
-                return context.Set<TEntity>().ToListAsync();
+                return await context.Set<TEntity>().ToListAsync();
             }
         }
 
         public bool Remove(TEntity entity)
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
                 context.Attach(entity).State = EntityState.Deleted;
                 return context.SaveChanges() > 0;
@@ -104,7 +111,7 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
 
         public async Task<bool> RemoveAsync(TEntity entity)
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
                 context.Attach(entity).State = EntityState.Deleted;
                 return await context.SaveChangesAsync() > 0;
@@ -113,7 +120,7 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
 
         public bool Update(TEntity entity)
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
                 entity.ModifiedDate = DateTime.Now;
 
@@ -124,7 +131,7 @@ namespace Asmin.DataAccess.Concrete.EntityFramework.Repository
 
         public async Task<bool> UpdateAsync(TEntity entity)
         {
-            using (var context = new TContext())
+            using (var context = new AsminDbContext(_connectionString))
             {
                 entity.ModifiedDate = DateTime.Now;
 
