@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
-using Microsoft.Extensions.Configuration.FileExtensions;
 
 namespace Asmin.Core.Configuration.Environment
 {

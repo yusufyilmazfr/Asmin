@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Asmin.Business\Asmin.Business.csproj" />
+    <ProjectReference Include="..\Asmin.Packages.AOP\Asmin.Packages.AOP.csproj" />
   </ItemGroup>
 
 
