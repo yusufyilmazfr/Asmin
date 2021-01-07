@@ -17,9 +17,10 @@ namespace Asmin.Business.Concrete
 {
     public class UserManager : IUserManager
     {
-        private IUserDal _userDal;
-        private IHashService _hashService;
-        private IValidator<User> _userValidator;
+        private readonly IUserDal _userDal;
+        private readonly IHashService _hashService;
+        private readonly IValidator<User> _userValidator;
+
         public UserManager(IUserDal userDal, IValidator<User> userValidator, IHashService hashService)
         {
             _userDal = userDal;
@@ -39,7 +40,7 @@ namespace Asmin.Business.Concrete
                 return new ErrorResult(firstErrorMessage);
             }
 
-            await _userDal.AddAsnyc(user);
+            await _userDal.AddAsync(user);
             return new SuccessResult(ResultMessages.UserAdded);
         }
 
@@ -57,13 +58,13 @@ namespace Asmin.Business.Concrete
 
         public async Task<IResult> RemoveAsync(User user)
         {
-            await _userDal.RemoveAsnyc(user);
+            await _userDal.RemoveAsync(user);
             return new SuccessResult(ResultMessages.UserRemoved);
         }
 
         public async Task<IResult> UpdateAsync(User user)
         {
-            await _userDal.UpdateAsnyc(user);
+            await _userDal.UpdateAsync(user);
             return new SuccessResult(ResultMessages.UserUpdated);
         }
 
@@ -91,7 +92,7 @@ namespace Asmin.Business.Concrete
         {
             var hashedPassword = _hashService.CreateHash(user.Password);
 
-            var tempUser = await _userDal.GetAsync(i => i.Email == user.Email && i.Password == hashedPassword);
+            User tempUser = _userDal.GetUser(user.Email, hashedPassword);
 
             return new SuccessDataResult<User>(tempUser?.WithoutPassword());
         }
