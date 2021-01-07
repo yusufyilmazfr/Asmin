@@ -13,7 +13,7 @@ namespace Asmin.Packages.AOP.Aspects.Exception
     {
         public override void OnException(IInvocation invocation, System.Exception exception)
         {
-            Console.WriteLine($"{this.GetType().Namespace}: {exception}");
+            Console.WriteLine($"[AsminExceptionAspect] {exception}");
         }
     }
 }
