@@ -4,8 +4,14 @@ using System.Text;
 
 namespace Asmin.Core.Entities.Concrete
 {
-    public class OperationClaim : BaseEntity
+    /// <summary>
+    /// OperationClaim means operation role. It can be role suc as admin, user or method claim such as InsertNewUser, AddUser etc.
+    /// </summary>
+    public class OperationClaim : BaseEntity<int>
     {
+        /// <summary>
+        /// Claim name.
+        /// </summary>
         public string Name { get; set; }
     }
 }
