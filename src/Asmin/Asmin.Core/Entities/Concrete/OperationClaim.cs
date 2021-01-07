@@ -13,5 +13,7 @@ namespace Asmin.Core.Entities.Concrete
         /// Claim name.
         /// </summary>
         public string Name { get; set; }
+
+        public List<UserOperationClaim> UserOperationClaims { get; set; }
     }
 }

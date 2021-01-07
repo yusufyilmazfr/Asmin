@@ -17,5 +17,8 @@ namespace Asmin.Core.Entities.Concrete
         /// Operation Claim Id.
         /// </summary>
         public int OperationClaimId { get; set; }
+
+        public User User { get; set; }
+        public OperationClaim OperationClaim { get; set; }
     }
 }

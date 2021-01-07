@@ -28,5 +28,7 @@ namespace Asmin.Core.Entities.Concrete
         /// Hashed password.
         /// </summary>
         public string Password { get; set; }
+
+        public List<UserOperationClaim> UserOperationClaims { get; set; }
     }
 }
