@@ -24,5 +24,8 @@ namespace Asmin.Core.Configuration.Context
         string MinIOSecretKey { get; set; }
 
         string ConnectionString { get; set; }
+
+        string JWTKey { get; set; }
+        int JWTExpiryHour { get; set; }
     }
 }
