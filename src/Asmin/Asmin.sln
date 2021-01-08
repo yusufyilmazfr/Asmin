@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Packages.Hashing.Core
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Packages.Hashing.MD5", "Asmin.Packages.Hashing.MD5\Asmin.Packages.Hashing.MD5.csproj", "{A3D69DD9-967B-4BC6-8667-ABD5914401E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Packages.Hashing.SHA256", "Asmin.Packages.Hashing.SHA256\Asmin.Packages.Hashing.SHA256.csproj", "{3B03DB25-6EA8-4CCB-8CE2-6AB443145281}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,10 @@ Global
 		{A3D69DD9-967B-4BC6-8667-ABD5914401E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3D69DD9-967B-4BC6-8667-ABD5914401E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3D69DD9-967B-4BC6-8667-ABD5914401E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B03DB25-6EA8-4CCB-8CE2-6AB443145281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B03DB25-6EA8-4CCB-8CE2-6AB443145281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B03DB25-6EA8-4CCB-8CE2-6AB443145281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B03DB25-6EA8-4CCB-8CE2-6AB443145281}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +112,7 @@ Global
 		{1F160E92-9A5E-4FDF-82AE-80E6B777EEE8} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
 		{D749F733-7480-433A-8CDA-82420450C97C} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
 		{A3D69DD9-967B-4BC6-8667-ABD5914401E6} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
+		{3B03DB25-6EA8-4CCB-8CE2-6AB443145281} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B8973CD-3F42-4F38-BDE7-5CC5F12C8B22}
