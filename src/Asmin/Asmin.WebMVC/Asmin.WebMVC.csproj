@@ -20,6 +20,7 @@
     <ProjectReference Include="..\Asmin.Core\Asmin.Core.csproj" />
     <ProjectReference Include="..\Asmin.Entities\Asmin.Entities.csproj" />
     <ProjectReference Include="..\Asmin.Packages.AOP\Asmin.Packages.AOP.csproj" />
+    <ProjectReference Include="..\Asmin.Packages.Hashing.MD5\Asmin.Packages.Hashing.MD5.csproj" />
   </ItemGroup>
 
 

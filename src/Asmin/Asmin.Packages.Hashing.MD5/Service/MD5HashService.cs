@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Text;
+using Asmin.Packages.Hashing.Core.Service;
+using AsminMD5 = System.Security.Cryptography.MD5;
 
-namespace Asmin.Core.Utilities.Hash
+namespace Asmin.Packages.Hashing.MD5.Service
 {
+    /// <summary>
+    /// MD5 hash service.
+    /// </summary>
     public class MD5HashService : IHashService
     {
-        public string CreateHash(string text)
+        public string Generate(string plainText)
         {
-            using (MD5 md5Hash = MD5.Create())
+            using (AsminMD5 md5Hash = AsminMD5.Create())
             {
                 // Convert the input string to a byte array and compute the hash.
-                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(text));
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(plainText));
 
                 // Create a new Stringbuilder to collect the bytes
                 // and create a string.
@@ -32,8 +36,7 @@ namespace Asmin.Core.Utilities.Hash
 
         public bool Compare(string hashedText, string plainText)
         {
-            return CreateHash(plainText) == hashedText;
+            return Generate(plainText) == hashedText;
         }
-
     }
 }

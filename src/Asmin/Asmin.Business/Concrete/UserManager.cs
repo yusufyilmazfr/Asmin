@@ -2,7 +2,6 @@
 using Asmin.Core.Constants.Messages;
 using Asmin.Core.Entities.Concrete;
 using Asmin.Core.Extensions;
-using Asmin.Core.Utilities.Hash;
 using Asmin.Core.Utilities.Result;
 using Asmin.DataAccess.Abstract;
 using FluentValidation;
@@ -11,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Asmin.Entities.CustomEntities.Request.User;
+using Asmin.Packages.Hashing.Core.Service;
 
 namespace Asmin.Business.Concrete
 {
@@ -29,7 +29,7 @@ namespace Asmin.Business.Concrete
 
         public async Task<IResult> AddAsync(User user)
         {
-            user.Password = _hashService.CreateHash(user.Password);
+            user.Password = _hashService.Generate(user.Password);
 
             var validationResult = await _userValidator.ValidateAsync(user);
 
@@ -69,7 +69,7 @@ namespace Asmin.Business.Concrete
 
         public IDataResult<User> Login(UserLoginRequest user)
         {
-            var hashedPassword = _hashService.CreateHash(user.Password);
+            var hashedPassword = _hashService.Generate(user.Password);
 
             User tempUser = _userDal.GetUser(user.Email, hashedPassword);
 

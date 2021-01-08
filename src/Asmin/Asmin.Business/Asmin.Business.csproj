@@ -13,6 +13,7 @@
     <ProjectReference Include="..\Asmin.DataAccess\Asmin.DataAccess.csproj" />
     <ProjectReference Include="..\Asmin.Entities\Asmin.Entities.csproj" />
     <ProjectReference Include="..\Asmin.Packages.AOP\Asmin.Packages.AOP.csproj" />
+    <ProjectReference Include="..\Asmin.Packages.Hashing.Core\Asmin.Packages.Hashing.Core.csproj" />
   </ItemGroup>
 
 </Project>

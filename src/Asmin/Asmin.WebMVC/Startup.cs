@@ -6,6 +6,7 @@ using Asmin.Business.Extensions;
 using Asmin.Core.DependencyModules;
 using Asmin.Core.Extensions;
 using Asmin.Packages.AOP.InterceptModule;
+using Asmin.Packages.Hashing.MD5.Extensions;
 using Asmin.WebMVC.Extensions;
 using Asmin.WebMVC.Services.Session;
 using Autofac;
@@ -62,14 +63,15 @@ namespace Asmin.WebMVC
             services.AddDependencyModules(new ICoreModule[]
             {
                 new MemoryCacheModule(),
-                new MD5HashModule()
             });
 
             services.AddSingleton<ISessionService, SessionService>();
 
             // Register business module. 🎉
-
             services.AddBusinessModule();
+
+            // Register MD5 module. 🎉
+            services.AddMD5();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
