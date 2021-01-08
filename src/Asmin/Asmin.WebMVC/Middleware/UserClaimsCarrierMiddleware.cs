@@ -29,7 +29,7 @@ namespace Asmin.WebMVC.Middleware
         {
             if (_sessionService.Any(SessionKey.CurrentUser))
             {
-                var currentUser = _sessionService.GetObject<User>(SessionKey.CurrentUser);
+                var currentUser = _sessionService.Get<User>(SessionKey.CurrentUser);
 
                 // TODO: Claim call operations will be taken to the Business layer later.
 

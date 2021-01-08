@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Asmin.WebMVC.Filters
 {
     /// <summary>
-    /// Check current user have 
+    /// Check current user exists.
     /// </summary>
     public class CheckSessionFilter : ActionFilterAttribute
     {

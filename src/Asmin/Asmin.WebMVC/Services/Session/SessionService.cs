@@ -9,14 +9,14 @@ namespace Asmin.WebMVC.Services.Session
 {
     public class SessionService : ISessionService
     {
-        private IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public SessionService(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public void SetObject(string key, object obj)
+        public void Set(string key, object obj)
         {
             _httpContextAccessor.HttpContext.Session.SetObject(key, obj);
         }
@@ -31,7 +31,7 @@ namespace Asmin.WebMVC.Services.Session
             _httpContextAccessor.HttpContext.Session.Clear();
         }
 
-        public T GetObject<T>(string key) where T : class
+        public T Get<T>(string key) where T : class
         {
             return _httpContextAccessor.HttpContext.Session.GetObject<T>(key);
         }
@@ -42,26 +42,6 @@ namespace Asmin.WebMVC.Services.Session
             {
                 _httpContextAccessor.HttpContext.Session.Remove(key);
             }
-        }
-
-        public void SetInt32(string key, int value)
-        {
-            _httpContextAccessor.HttpContext.Session.SetInt32(key, value);
-        }
-
-        public int? GetInt32(string key)
-        {
-            return _httpContextAccessor.HttpContext.Session.GetInt32(key);
-        }
-
-        public void SetString(string key, string value)
-        {
-            _httpContextAccessor.HttpContext.Session.SetString(key, value);
-        }
-
-        public string GetString(string key)
-        {
-            return _httpContextAccessor.HttpContext.Session.GetString(key);
         }
     }
 }

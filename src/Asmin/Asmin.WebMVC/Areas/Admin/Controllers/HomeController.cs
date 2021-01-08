@@ -18,7 +18,7 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
     {
         private readonly IUserManager _userManager;
         private readonly ISessionService _sessionService;
-        public User CurrentUser => _sessionService.GetObject<User>(SessionKey.CurrentUser);
+        public User CurrentUser => _sessionService.Get<User>(SessionKey.CurrentUser);
 
         public HomeController(IUserManager userManager, ISessionService sessionService)
         {
@@ -44,7 +44,7 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
 
         [HttpPost]
         [AllowAnySessionFilter]
-        public async IActionResult Login(UserLoginRequest user)
+        public IActionResult Login(UserLoginRequest user)
         {
             var checkUser = _userManager.Login(user);
 
@@ -60,7 +60,7 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
                 return View(user);
             }
 
-            _sessionService.SetObject(SessionKey.CurrentUser, checkUser.Data);
+            _sessionService.Set(SessionKey.CurrentUser, checkUser.Data);
 
             return RedirectToAction("Index");
         }
