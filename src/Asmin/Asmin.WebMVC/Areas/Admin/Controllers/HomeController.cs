@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Asmin.Business.Abstract;
 using Asmin.Core.Entities.Concrete;
-using Asmin.Entities.DTO;
+using Asmin.Entities.CustomEntities.Request.User;
 using Asmin.WebMVC.Constants;
 using Asmin.WebMVC.Filters;
 using Asmin.WebMVC.Services.Session;
@@ -13,11 +13,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Asmin.WebMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [TypeFilter(typeof(CheckSessionFilter))]
     public class HomeController : Controller
     {
-        private IUserManager _userManager;
-        private ISessionService _sessionService;
-        public User CurrentUser => _sessionService.GetObject<User>(SessionKey.CURRENT_USER);
+        private readonly IUserManager _userManager;
+        private readonly ISessionService _sessionService;
+        public User CurrentUser => _sessionService.GetObject<User>(SessionKey.CurrentUser);
 
         public HomeController(IUserManager userManager, ISessionService sessionService)
         {
@@ -25,12 +26,12 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
             _sessionService = sessionService;
         }
 
-        [CheckSessionFilter]
         public IActionResult Index()
         {
             return View();
         }
 
+        [AllowAnySessionFilter]
         public IActionResult Login()
         {
             if (CurrentUser != null)
@@ -42,9 +43,10 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(UserLoginDto user)
+        [AllowAnySessionFilter]
+        public async IActionResult Login(UserLoginRequest user)
         {
-            var checkUser = await _userManager.Login(user);
+            var checkUser = _userManager.Login(user);
 
             if (!checkUser.IsSuccess)
             {
@@ -58,14 +60,15 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
                 return View(user);
             }
 
-            _sessionService.SetObject(SessionKey.CURRENT_USER, checkUser.Data);
+            _sessionService.SetObject(SessionKey.CurrentUser, checkUser.Data);
 
             return RedirectToAction("Index");
         }
 
         public IActionResult Logout()
         {
-            _sessionService.Remove(SessionKey.CURRENT_USER);
+            _sessionService.Remove(SessionKey.CurrentUser);
+
             return RedirectToAction("Login");
         }
     }

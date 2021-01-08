@@ -1,17 +1,16 @@
 ﻿using Asmin.Business.Abstract;
 using Asmin.Core.Constants.Messages;
-using Asmin.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Asmin.Core.Entities.Concrete;
 using Asmin.Core.Extensions;
 using Asmin.Core.Utilities.Hash;
 using Asmin.Core.Utilities.Result;
 using Asmin.DataAccess.Abstract;
-using Asmin.Entities.DTO;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Asmin.Entities.CustomEntities.Request.User;
 
 namespace Asmin.Business.Concrete
 {
@@ -32,7 +31,7 @@ namespace Asmin.Business.Concrete
         {
             user.Password = _hashService.CreateHash(user.Password);
 
-            var validationResult = _userValidator.Validate(user);
+            var validationResult = await _userValidator.ValidateAsync(user);
 
             if (!validationResult.IsValid)
             {
@@ -68,27 +67,7 @@ namespace Asmin.Business.Concrete
             return new SuccessResult(ResultMessages.UserUpdated);
         }
 
-        public void TransactionalTestMethod()
-        {
-            User user1 = new User
-            {
-                FirstName = "Asmin",
-                LastName = "Yılmaz",
-                Email = "yusufyilmazfr@gmail.com",
-                Password = "123"
-            };
-
-            User user2 = new User
-            {
-                Email = "yusufyilmazfr@gmail.com",
-                Password = "123"
-            };
-
-            _userDal.Add(user1);
-            _userDal.Add(user2);
-        }
-
-        public async Task<IDataResult<User>> Login(UserLoginDto user)
+        public IDataResult<User> Login(UserLoginRequest user)
         {
             var hashedPassword = _hashService.CreateHash(user.Password);
 

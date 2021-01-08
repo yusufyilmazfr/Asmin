@@ -7,7 +7,7 @@ namespace Asmin.Core.Entities.Concrete
     /// <summary>
     /// BaseEntity provides common properties to database entities.
     /// </summary>
-    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TKey">Unique key.</typeparam>
     public abstract class BaseEntity<TKey>
     {
         /// <summary>
