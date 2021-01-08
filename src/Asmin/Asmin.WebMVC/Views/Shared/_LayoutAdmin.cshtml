@@ -4,7 +4,7 @@
 
 @inject ISessionService sessionService
 @{
-    User CurrentUser = sessionService.GetObject<User>(SessionKey.CURRENT_USER);
+    User CurrentUser = sessionService.GetObject<User>(SessionKey.CurrentUser);
 }
 
 <!doctype html>

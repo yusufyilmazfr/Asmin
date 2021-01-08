@@ -14,9 +14,9 @@ namespace Asmin.WebMVC.Middleware
 {
     public class UserClaimsCarrierMiddleware
     {
-        private RequestDelegate _next;
-        private IUserManager _userManager;
-        private ISessionService _sessionService;
+        private readonly RequestDelegate _next;
+        private readonly IUserManager _userManager;
+        private readonly ISessionService _sessionService;
 
         public UserClaimsCarrierMiddleware(RequestDelegate next, IUserManager userManager, ISessionService sessionService)
         {
@@ -27,9 +27,9 @@ namespace Asmin.WebMVC.Middleware
 
         public async Task InvokeAsync(HttpContext context)
         {
-            if (_sessionService.Any(SessionKey.CURRENT_USER))
+            if (_sessionService.Any(SessionKey.CurrentUser))
             {
-                var currentUser = _sessionService.GetObject<User>(SessionKey.CURRENT_USER);
+                var currentUser = _sessionService.GetObject<User>(SessionKey.CurrentUser);
 
                 // TODO: Claim call operations will be taken to the Business layer later.
 

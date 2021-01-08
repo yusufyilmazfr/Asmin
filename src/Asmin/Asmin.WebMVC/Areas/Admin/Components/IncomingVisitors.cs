@@ -9,7 +9,7 @@ namespace Asmin.WebMVC.Areas.Admin.Components
 {
     public class IncomingVisitors : ViewComponent
     {
-        private IIncomingVisitorManager _incomingVisitorManager;
+        private readonly IIncomingVisitorManager _incomingVisitorManager;
 
         public IncomingVisitors(IIncomingVisitorManager incomingVisitorManager)
         {

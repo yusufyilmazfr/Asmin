@@ -9,7 +9,7 @@ namespace Asmin.WebMVC.Areas.Admin.Components
 {
     public class RegisteredUsersCount : ViewComponent
     {
-        private IUserManager _userManager;
+        private readonly IUserManager _userManager;
 
         public RegisteredUsersCount(IUserManager userManager)
         {
@@ -18,9 +18,9 @@ namespace Asmin.WebMVC.Areas.Admin.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var usersCountResul = await _userManager.GetCountAsync();
+            var usersCountResult = await _userManager.GetCountAsync();
 
-            return View(usersCountResul.Data);
+            return View(usersCountResult.Data);
         }
     }
 }

@@ -7,6 +7,6 @@ namespace Asmin.WebMVC.Constants
 {
     public static class SessionKey
     {
-        public static string CURRENT_USER => "CURRENT_USER";
+        public static string CurrentUser => "CURRENT_USER";
     }
 }
