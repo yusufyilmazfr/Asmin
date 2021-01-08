@@ -11,37 +11,40 @@ using System.Threading.Tasks;
 
 namespace Asmin.WebMVC.Filters
 {
-    public class CheckSessionFilter : Attribute, IActionFilter
+    /// <summary>
+    /// Check current user exists.
+    /// </summary>
+    public class CheckSessionFilter : ActionFilterAttribute
     {
-        private ISessionService _sessionService;
+        private readonly ISessionService _sessionService;
 
-        public void OnActionExecuting(ActionExecutingContext context)
+        public CheckSessionFilter(ISessionService sessionService)
         {
-            //var any = context
-            //    .ActionDescriptor
-            //    .EndpointMetadata.Select(i => i.GetType().FullName == typeof(SkipCheckSessionFilter).FullName).Any();
+            _sessionService = sessionService;
+        }
 
-            //if (any)
-            //{
-            //    return;
-            //}
+        public override void OnResultExecuting(ResultExecutingContext context)
+        {
+            if (CheckMethodContainsAllowAnySessionFilter(context))
+            {
+                return;
+            }
 
-            _sessionService = context.HttpContext.RequestServices.GetService<ISessionService>();
-
-            var isUserLoggedIn = _sessionService.Any(SessionKey.CURRENT_USER);
+            var isUserLoggedIn = _sessionService.Any(SessionKey.CurrentUser);
 
             if (!isUserLoggedIn)
             {
                 context.Result = new RedirectToRouteResult(new RouteValueDictionary
                 {
-                    {"controller","Home" },{"action","Login"}
+                    {"controller" , "Home" } ,
+                    {"action" , "Login"}
                 });
             }
         }
 
-        public void OnActionExecuted(ActionExecutedContext context)
+        private bool CheckMethodContainsAllowAnySessionFilter(ResultExecutingContext context)
         {
-
+            return context.Filters.Any(filter => filter.GetType().Name == nameof(AllowAnySessionFilter));
         }
     }
 }

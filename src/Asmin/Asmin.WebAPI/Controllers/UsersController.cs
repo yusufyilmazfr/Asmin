@@ -90,11 +90,5 @@ namespace Asmin.WebAPI.Controllers
 
             return Ok(checkUserIsRemoved.Message);
         }
-        [HttpGet]
-        [Route("test")]
-        public void TransactionalTestMethod()
-        {
-            _userManager.TransactionalTestMethod();
-        }
     }
 }

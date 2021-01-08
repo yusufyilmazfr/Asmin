@@ -9,9 +9,6 @@ namespace Asmin.Core.Utilities.Middleware.MVC
 {
     public class MVCExceptionMiddleware
     {
-        private const string SERVER_ERROR_MESSAGE = "Unexpected server error.";
-        private const string ASPECT_ERROR_MESSAGE = "Unexpected server error, please try again.";
-
         private string _errorPageUrl;
 
         private RequestDelegate _next;

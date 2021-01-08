@@ -8,4 +8,8 @@
     <ProjectReference Include="..\Asmin.Core\Asmin.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CustomEntities\Response\" />
+  </ItemGroup>
+
 </Project>

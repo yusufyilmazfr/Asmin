@@ -22,6 +22,8 @@ namespace Asmin.Core.Configuration.Context
         public string MinIOAccessKey { get; set; }
         public string MinIOSecretKey { get; set; }
 
+        public string ConnectionString { get; set; }
+
         public AsminConfigurationContext(IEnvironmentService environmentService)
         {
             RedisHost = environmentService.Configuration["Redis:Host"];
@@ -37,6 +39,8 @@ namespace Asmin.Core.Configuration.Context
             MinIOEndPoint = environmentService.Configuration["MinIO:EndPoint"];
             MinIOAccessKey = environmentService.Configuration["MinIO:AccessKey"];
             MinIOSecretKey = environmentService.Configuration["MinIO:SecretKey"];
+
+            ConnectionString = environmentService.Configuration["ConnectionStrings:ConnectionString"];
         }
     }
 }

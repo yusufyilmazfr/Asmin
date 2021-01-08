@@ -13,7 +13,6 @@ namespace Asmin.Core.Utilities.Middleware.API
         public readonly RequestDelegate _next;
 
         private const string SERVER_ERROR_MESSAGE = "Unexpected server error.";
-        private const string ASPECT_ERROR_MESSAGE = "Unexpected server error, please try again.";
 
         public APIExceptionMiddleware(RequestDelegate next)
         {
@@ -32,11 +31,6 @@ namespace Asmin.Core.Utilities.Middleware.API
             {
                 context.Response.StatusCode = StatusCodes.Status401Unauthorized;
                 message = new ExceptionMessage(StatusCodes.Status401Unauthorized, e.Message);
-            }
-            catch (AspectException e)
-            {
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                message = new ExceptionMessage(StatusCodes.Status500InternalServerError, ASPECT_ERROR_MESSAGE);
             }
             catch (Exception e)
             {

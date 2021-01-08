@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Asmin.Entities.Concrete
 {
-    public class IncomingVisitor : BaseEntity
+    public class IncomingVisitor : BaseEntity<int>
     {
         public string IpAddress { get; set; }
     }

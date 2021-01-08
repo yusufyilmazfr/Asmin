@@ -22,5 +22,7 @@ namespace Asmin.Core.Configuration.Context
         string MinIOEndPoint { get; set; }
         string MinIOAccessKey { get; set; }
         string MinIOSecretKey { get; set; }
+
+        string ConnectionString { get; set; }
     }
 }
