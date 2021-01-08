@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Asmin.WebMVC",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:59283",
       "sslPort": 44345

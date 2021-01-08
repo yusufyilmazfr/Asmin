@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Asmin.Business\Asmin.Business.csproj" />
     <ProjectReference Include="..\Asmin.Packages.AOP\Asmin.Packages.AOP.csproj" />
+    <ProjectReference Include="..\Asmin.Packages.Hashing.MD5\Asmin.Packages.Hashing.MD5.csproj" />
   </ItemGroup>
 
 
