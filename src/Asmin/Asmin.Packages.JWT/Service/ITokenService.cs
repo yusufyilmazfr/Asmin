@@ -14,6 +14,6 @@ namespace Asmin.Packages.JWT.Service
         /// </summary>
         /// <param name="claimKeyValuePairs">Claim key value pairs.</param>
         /// <returns></returns>
-        TokenResult Generate(List<ClaimKeyValuePair> claimKeyValuePairs);
+        GenerateTokenResult Generate(List<ClaimKeyValuePair> claimKeyValuePairs);
     }
 }

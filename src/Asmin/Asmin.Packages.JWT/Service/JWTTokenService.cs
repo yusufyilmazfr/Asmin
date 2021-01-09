@@ -21,9 +21,9 @@ namespace Asmin.Packages.JWT.Service
             _configuration = configuration;
         }
 
-        public TokenResult Generate(List<ClaimKeyValuePair> claimKeyValuePairs)
+        public GenerateTokenResult Generate(List<ClaimKeyValuePair> claimKeyValuePairs)
         {
-            var tokenResult = new TokenResult();
+            var tokenResult = new GenerateTokenResult();
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var key = Encoding.ASCII.GetBytes(_configuration.SecretKey);

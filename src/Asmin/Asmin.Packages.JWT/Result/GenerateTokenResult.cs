@@ -7,7 +7,7 @@ namespace Asmin.Packages.JWT.Result
     /// <summary>
     /// Token result contains JWT token result.
     /// </summary>
-    public class TokenResult
+    public class GenerateTokenResult
     {
         /// <summary>
         /// Generated token.
