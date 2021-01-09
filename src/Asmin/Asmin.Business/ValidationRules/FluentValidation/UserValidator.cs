@@ -3,9 +3,11 @@ using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Asmin.Packages.AOP.Attributes;
 
 namespace Asmin.Business.ValidationRules.FluentValidation
 {
+    [IgnoreAOP]
     public class UserValidator : AbstractValidator<User>
     {
         public UserValidator()

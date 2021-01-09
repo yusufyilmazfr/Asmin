@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Asmin.Entities.CustomEntities.Request.User;
+using Asmin.Packages.AOP.Aspects.Exception;
+using Asmin.Packages.AOP.Aspects.Transaction;
 using Asmin.Packages.Hashing.Core.Service;
 
 namespace Asmin.Business.Concrete
@@ -27,10 +29,10 @@ namespace Asmin.Business.Concrete
             _hashService = hashService;
         }
 
+        [AsminExceptionAspect]
+        [AsminUnitOfWorkAspect]
         public async Task<IResult> AddAsync(User user)
         {
-            user.Password = _hashService.Generate(user.Password);
-
             var validationResult = await _userValidator.ValidateAsync(user);
 
             if (!validationResult.IsValid)
@@ -38,6 +40,8 @@ namespace Asmin.Business.Concrete
                 var firstErrorMessage = validationResult.Errors.Select(failure => failure.ErrorMessage).FirstOrDefault();
                 return new ErrorResult(firstErrorMessage);
             }
+
+            user.Password = _hashService.Generate(user.Password);
 
             await _userDal.AddAsync(user);
             return new SuccessResult(ResultMessages.UserAdded);
