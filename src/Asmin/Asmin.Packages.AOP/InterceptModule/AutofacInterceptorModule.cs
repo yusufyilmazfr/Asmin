@@ -26,7 +26,7 @@ namespace Asmin.Packages.AOP.InterceptModule
             builder.RegisterAssemblyTypes(_assembly)
                 .Where(type =>
                 {
-                    var checkHasIgnoreAttribute = type.GetCustomAttributes(false).Any(attribute => attribute.GetType().Name == nameof(IgnoreAOPPackageAttribute));
+                    var checkHasIgnoreAttribute = type.GetCustomAttributes(false).Any(attribute => attribute.GetType().Name == nameof(IgnoreAOPAttribute));
 
                     return !checkHasIgnoreAttribute;
                 })
