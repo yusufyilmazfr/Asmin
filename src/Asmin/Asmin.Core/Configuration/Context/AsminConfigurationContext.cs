@@ -24,6 +24,11 @@ namespace Asmin.Core.Configuration.Context
 
         public string ConnectionString { get; set; }
 
+        public string JWTKey { get; set; }
+        public string JWTIssuer { get; set; }
+        public string JWTAudience { get; set; }
+        public int JWTExpiryHour { get; set; }
+
         public AsminConfigurationContext(IEnvironmentService environmentService)
         {
             RedisHost = environmentService.Configuration["Redis:Host"];
@@ -41,6 +46,11 @@ namespace Asmin.Core.Configuration.Context
             MinIOSecretKey = environmentService.Configuration["MinIO:SecretKey"];
 
             ConnectionString = environmentService.Configuration["ConnectionStrings:ConnectionString"];
+
+            JWTKey = environmentService.Configuration["JWT:Key"];
+            JWTIssuer = environmentService.Configuration["JWT:Issuer"];
+            JWTAudience = environmentService.Configuration["JWT:Audience"];
+            JWTExpiryHour = int.Parse(environmentService.Configuration["JWT:ExpiryHour"]);
         }
     }
 }
