@@ -12,8 +12,14 @@ namespace Asmin.Packages.JWT.Service
         /// <summary>
         /// Generate JWT token with specified claims.
         /// </summary>
-        /// <param name="claimKeyValuePairs">Claim key value pairs.</param>
+        /// <param name="claims">Claims</param>
         /// <returns></returns>
-        GenerateTokenResult Generate(List<ClaimKeyValuePair> claimKeyValuePairs);
+        GenerateTokenResult Generate(IEnumerable<Claim> claims);
+        /// <summary>
+        /// Read specified token. It returns token status. It is valid or is not valid. Return value contains token status, expiry date and claims.
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        ResolveTokenResult ResolveToken(string token);
     }
 }
