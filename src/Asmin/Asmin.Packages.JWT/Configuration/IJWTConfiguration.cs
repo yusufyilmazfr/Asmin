@@ -12,6 +12,14 @@ namespace Asmin.Packages.JWT.Configuration
     public interface IJWTConfiguration
     {
         /// <summary>
+        /// Audience
+        /// </summary>
+        string Audience { get; set; }
+        /// <summary>
+        /// Issuer
+        /// </summary>
+        string Issuer { get; set; }
+        /// <summary>
         /// Secret key.
         /// </summary>
         string SecretKey { get; set; }

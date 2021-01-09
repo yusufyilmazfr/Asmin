@@ -34,7 +34,9 @@ namespace Asmin.Packages.JWT.Service
             {
                 Subject = GenerateClaimsIdentityList(claimKeyValuePairs),
                 Expires = tokenResult.ExpiryDate,
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), GetEnumDescription(_configuration.TokenSecurityAlgorithms))
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), GetEnumDescription(_configuration.TokenSecurityAlgorithms)),
+                Issuer = _configuration.Issuer,
+                Audience = _configuration.Audience
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
