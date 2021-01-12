@@ -7,6 +7,7 @@ using Asmin.Business.Abstract;
 using Asmin.Core.Entities.Concrete;
 using Asmin.Core.Extensions;
 using Asmin.Entities.CustomEntities.Request.User;
+using Asmin.Packages.JWT.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,7 @@ namespace Asmin.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [TypeFilter(typeof(AsminTokenAuthFilter))]
     public class UsersController : ControllerBase
     {
         private readonly IUserManager _userManager;
@@ -25,6 +27,7 @@ namespace Asmin.WebAPI.Controllers
 
         [HttpPost]
         [Route("login")]
+        [AsminIgnoreTokenAuthFilter]
         public IActionResult Login(UserLoginRequest request)
         {
             var checkUserLoginRequest = _userManager.Login(request);
@@ -52,6 +55,7 @@ namespace Asmin.WebAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
+        [TypeFilter(typeof(AsminTokenAuthFilter))]
         public async Task<IActionResult> GetById(int id)
         {
             var userDataResult = await _userManager.GetByIdAsync(id);
