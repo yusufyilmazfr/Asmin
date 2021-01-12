@@ -52,5 +52,10 @@ namespace Asmin.Business.Abstract
         /// <param name="id">User id</param>
         /// <returns></returns>
         IDataResult<List<OperationClaim>> GetClaimsByUserId(int id);
+        /// <summary>
+        /// It returns users count.
+        /// </summary>
+        /// <returns></returns>
+        Task<IDataResult<int>> GetCountAsync();
     }
 }
