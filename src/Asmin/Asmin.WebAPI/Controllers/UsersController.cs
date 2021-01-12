@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Asmin.Business.Abstract;
 using Asmin.Core.Entities.Concrete;
 using Asmin.Core.Extensions;
+using Asmin.Entities.CustomEntities.Request.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,11 +16,25 @@ namespace Asmin.WebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private IUserManager _userManager;
+        private readonly IUserManager _userManager;
 
         public UsersController(IUserManager userManager)
         {
             _userManager = userManager;
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public IActionResult Login(UserLoginRequest request)
+        {
+            var checkUserLoginRequest = _userManager.Login(request);
+
+            if (!checkUserLoginRequest.IsSuccess)
+            {
+                return BadRequest(checkUserLoginRequest);
+            }
+
+            return Ok(checkUserLoginRequest);
         }
 
         [HttpGet]
@@ -27,12 +42,12 @@ namespace Asmin.WebAPI.Controllers
         {
             var userDataResult = await _userManager.GetListAsync();
 
-            if (userDataResult.IsSuccess)
+            if (!userDataResult.IsSuccess)
             {
-                return Ok(userDataResult.Data);
+                return BadRequest(userDataResult);
             }
 
-            return BadRequest(userDataResult.Message);
+            return Ok(userDataResult);
         }
 
         [HttpGet]
@@ -41,54 +56,52 @@ namespace Asmin.WebAPI.Controllers
         {
             var userDataResult = await _userManager.GetByIdAsync(id);
 
-            if (userDataResult.IsSuccess)
+            if (!userDataResult.IsSuccess)
             {
-                return Ok(userDataResult.Data);
+                return BadRequest(userDataResult);
             }
 
-            return BadRequest(userDataResult.Message);
+            return Ok(userDataResult);
         }
 
         [HttpPost]
-        [Route("Add")]
-        public async Task<IActionResult> Add(User user)
+        public async Task<IActionResult> Add(InsertUserRequest insertUserRequest)
         {
-            var checkIfUserAdded = await _userManager.AddAsync(user);
+            var checkUserAdded = await _userManager.AddAsync(insertUserRequest);
 
-            if (!checkIfUserAdded.IsSuccess)
+            if (!checkUserAdded.IsSuccess)
             {
-                BadRequest(checkIfUserAdded.Message);
+                BadRequest(checkUserAdded);
             }
 
-            return Ok(checkIfUserAdded.Message);
+            return Ok(checkUserAdded);
         }
 
-        [HttpPost]
-        [Route("Update")]
-        public async Task<IActionResult> Update(User user)
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateUserRequest updateUserRequest)
         {
-            var checkIfUserUpdated = await _userManager.UpdateAsync(user);
+            var checkUserUpdated = await _userManager.UpdateAsync(updateUserRequest);
 
-            if (!checkIfUserUpdated.IsSuccess)
+            if (!checkUserUpdated.IsSuccess)
             {
-                return BadRequest(checkIfUserUpdated.Message);
+                return BadRequest(checkUserUpdated);
             }
 
-            return Ok(checkIfUserUpdated.Message);
+            return Ok(checkUserUpdated);
         }
 
-        [HttpPost]
-        [Route("Delete")]
-        public async Task<IActionResult> Remove(User user)
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Remove(int id)
         {
-            var checkUserIsRemoved = await _userManager.RemoveAsync(user);
+            var checkUserRemoved = await _userManager.RemoveAsync(id);
 
-            if (!checkUserIsRemoved.IsSuccess)
+            if (!checkUserRemoved.IsSuccess)
             {
-                return BadRequest(checkUserIsRemoved.Message);
+                return BadRequest(checkUserRemoved);
             }
 
-            return Ok(checkUserIsRemoved.Message);
+            return Ok(checkUserRemoved);
         }
     }
 }

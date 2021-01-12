@@ -6,10 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Asmin.Core\Asmin.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CustomEntities\Response\" />
+    <ProjectReference Include="..\Asmin.Packages.JWT\Asmin.Packages.JWT.csproj" />
   </ItemGroup>
 
 </Project>

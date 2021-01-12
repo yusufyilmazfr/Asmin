@@ -8,11 +8,14 @@ using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Asmin.Entities.CustomEntities.Request.User;
+using Asmin.Entities.CustomEntities.Response.User;
 using Asmin.Packages.AOP.Aspects.Exception;
 using Asmin.Packages.AOP.Aspects.Transaction;
 using Asmin.Packages.Hashing.Core.Service;
+using Asmin.Packages.JWT.Service;
 
 namespace Asmin.Business.Concrete
 {
@@ -20,19 +23,29 @@ namespace Asmin.Business.Concrete
     {
         private readonly IUserDal _userDal;
         private readonly IHashService _hashService;
+        private readonly ITokenService _tokenService;
         private readonly IValidator<User> _userValidator;
 
-        public UserManager(IUserDal userDal, IValidator<User> userValidator, IHashService hashService)
+        public UserManager(IUserDal userDal, IValidator<User> userValidator, IHashService hashService, ITokenService tokenService)
         {
             _userDal = userDal;
-            _userValidator = userValidator;
             _hashService = hashService;
+            _tokenService = tokenService;
+            _userValidator = userValidator;
         }
 
         [AsminExceptionAspect]
         [AsminUnitOfWorkAspect]
-        public async Task<IResult> AddAsync(User user)
+        public async Task<IResult> AddAsync(InsertUserRequest insertUserRequest)
         {
+            var user = new User
+            {
+                FirstName = insertUserRequest.FirstName,
+                LastName = insertUserRequest.LastName,
+                Email = insertUserRequest.Email,
+                Password = insertUserRequest.Password
+            };
+
             var validationResult = await _userValidator.ValidateAsync(user);
 
             if (!validationResult.IsValid)
@@ -59,25 +72,66 @@ namespace Asmin.Business.Concrete
             return new SuccessDataResult<List<User>>(users);
         }
 
-        public async Task<IResult> RemoveAsync(User user)
+        public async Task<IResult> RemoveAsync(int id)
         {
-            await _userDal.RemoveAsync(user);
+            var currentUser = await _userDal.GetByIdAsync(id);
+
+            if (currentUser == null)
+            {
+                return new ErrorResult(ResultMessages.UserNotFound);
+            }
+
+            await _userDal.RemoveAsync(currentUser);
+
             return new SuccessResult(ResultMessages.UserRemoved);
         }
 
-        public async Task<IResult> UpdateAsync(User user)
+        public async Task<IResult> UpdateAsync(UpdateUserRequest updateUserRequest)
         {
-            await _userDal.UpdateAsync(user);
+            var currentUser = await _userDal.GetByIdAsync(updateUserRequest.Id);
+
+            if (currentUser == null)
+            {
+                return new ErrorResult(ResultMessages.UserNotFound);
+            }
+
+            currentUser.FirstName = updateUserRequest.FirstName;
+            currentUser.LastName = updateUserRequest.LastName;
+            currentUser.Email = updateUserRequest.Email;
+
+            await _userDal.UpdateAsync(currentUser);
+
             return new SuccessResult(ResultMessages.UserUpdated);
         }
 
-        public IDataResult<User> Login(UserLoginRequest user)
+        public IDataResult<UserLoginResponse> Login(UserLoginRequest loginRequest)
         {
-            var hashedPassword = _hashService.Generate(user.Password);
+            var userLoginResponse = new UserLoginResponse();
 
-            User tempUser = _userDal.GetUser(user.Email, hashedPassword);
+            var hashedPassword = _hashService.Generate(loginRequest.Password);
 
-            return new SuccessDataResult<User>(tempUser?.WithoutPassword());
+            var user = _userDal.GetUser(loginRequest.Email, hashedPassword);
+
+            if (user == null)
+            {
+                return new ErrorDataResult<UserLoginResponse>(userLoginResponse, ResultMessages.UserNotFound);
+            }
+
+            userLoginResponse.User = user;
+            userLoginResponse.TokenInformation = _tokenService.Generate(GenerateUserClaims(user));
+
+            return new SuccessDataResult<UserLoginResponse>(userLoginResponse);
+        }
+
+        private IEnumerable<Claim> GenerateUserClaims(User user)
+        {
+            return new List<Claim>()
+            {
+                new Claim(ClaimTypes.Name,user.FirstName),
+                new Claim(ClaimTypes.Surname,user.LastName),
+                new Claim(ClaimTypes.Email,user.Email),
+                new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+            };
         }
 
         public async Task<IDataResult<int>> GetCountAsync()

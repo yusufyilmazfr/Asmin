@@ -14,6 +14,7 @@
     <ProjectReference Include="..\Asmin.Entities\Asmin.Entities.csproj" />
     <ProjectReference Include="..\Asmin.Packages.AOP\Asmin.Packages.AOP.csproj" />
     <ProjectReference Include="..\Asmin.Packages.Hashing.Core\Asmin.Packages.Hashing.Core.csproj" />
+    <ProjectReference Include="..\Asmin.Packages.JWT\Asmin.Packages.JWT.csproj" />
   </ItemGroup>
 
 </Project>
