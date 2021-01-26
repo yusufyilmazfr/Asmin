@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Asmin.Business.Extensions;
-using Asmin.Core.DependencyModules;
 using Asmin.Core.Extensions;
 using Asmin.Packages.AOP.InterceptModule;
 using Asmin.Packages.Hashing.MD5.Extensions;
@@ -50,8 +49,6 @@ namespace Asmin.WebMVC
         {
             services.AddHttpContextAccessor();
 
-            services.AddDistributedMemoryCache();
-
             services.AddSession();
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -60,12 +57,10 @@ namespace Asmin.WebMVC
 
             services.AddControllersWithViews();
 
-            services.AddDependencyModules(new ICoreModule[]
-            {
-                new MemoryCacheModule(),
-            });
-
             services.AddSingleton<ISessionService, SessionService>();
+
+            // Register core module. 🎉
+            services.AddCoreModule();
 
             // Register business module. 🎉
             services.AddBusinessModule();

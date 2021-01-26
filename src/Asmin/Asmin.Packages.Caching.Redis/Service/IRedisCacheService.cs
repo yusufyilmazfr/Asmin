@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Asmin.Packages.Caching.Core.Service;
 
-namespace Asmin.Packages.Cachings.Redis.Service
+namespace Asmin.Packages.Caching.Redis.Service
 {
     /// <summary>
     /// Redis cache service interface provides some operations for Redis database
     /// </summary>
-    public interface IRedisCacheService
+    public interface IRedisCacheService : ICacheService
     {
         /// <summary>
         /// Insert data to cache.
@@ -31,6 +29,13 @@ namespace Asmin.Packages.Cachings.Redis.Service
         /// <param name="key">Unique key name</param>
         /// <param name="databaseId">Current database id</param>
         void Remove(string key, int databaseId = 0);
+        /// <summary>
+        /// Check key exists in cache.
+        /// </summary>
+        /// <param name="key">Unique key name</param>
+        /// <param name="databaseId">Current database</param>
+        /// <returns></returns>
+        bool Any(string key, int databaseId = 0);
         /// <summary>
         /// Insert data to cache.
         /// </summary>
