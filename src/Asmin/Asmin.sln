@@ -37,7 +37,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.Packages.Hashing.MD5"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.Packages.Hashing.SHA256", "Asmin.Packages.Hashing.SHA256\Asmin.Packages.Hashing.SHA256.csproj", "{3B03DB25-6EA8-4CCB-8CE2-6AB443145281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Packages.JWT", "Asmin.Packages.JWT\Asmin.Packages.JWT.csproj", "{A7A3F9B7-4DB1-47E7-825B-9B0972493D9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asmin.Packages.JWT", "Asmin.Packages.JWT\Asmin.Packages.JWT.csproj", "{A7A3F9B7-4DB1-47E7-825B-9B0972493D9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Packages.Caching.Core", "Asmin.Packages.Caching.Core\Asmin.Packages.Caching.Core.csproj", "{9CCFBDDC-7DED-4026-A23E-FC08632E5A73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asmin.Packages.Caching.InMemory", "Asmin.Packages.Caching.InMemory\Asmin.Packages.Caching.InMemory.csproj", "{56FD293C-5978-41FC-B2F4-0C4501C25F7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +105,14 @@ Global
 		{A7A3F9B7-4DB1-47E7-825B-9B0972493D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7A3F9B7-4DB1-47E7-825B-9B0972493D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7A3F9B7-4DB1-47E7-825B-9B0972493D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CCFBDDC-7DED-4026-A23E-FC08632E5A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CCFBDDC-7DED-4026-A23E-FC08632E5A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CCFBDDC-7DED-4026-A23E-FC08632E5A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CCFBDDC-7DED-4026-A23E-FC08632E5A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56FD293C-5978-41FC-B2F4-0C4501C25F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FD293C-5978-41FC-B2F4-0C4501C25F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FD293C-5978-41FC-B2F4-0C4501C25F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FD293C-5978-41FC-B2F4-0C4501C25F7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +132,8 @@ Global
 		{A3D69DD9-967B-4BC6-8667-ABD5914401E6} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
 		{3B03DB25-6EA8-4CCB-8CE2-6AB443145281} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
 		{A7A3F9B7-4DB1-47E7-825B-9B0972493D9C} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
+		{9CCFBDDC-7DED-4026-A23E-FC08632E5A73} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
+		{56FD293C-5978-41FC-B2F4-0C4501C25F7D} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B8973CD-3F42-4F38-BDE7-5CC5F12C8B22}
