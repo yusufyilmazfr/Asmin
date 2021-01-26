@@ -10,4 +10,8 @@
     <PackageReference Include="StackExchange.Redis" Version="2.2.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Asmin.Packages.Caching.Core\Asmin.Packages.Caching.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -7,7 +7,7 @@ namespace Asmin.Packages.Caching.Redis.Server
     /// <summary>
     /// Redis Server
     /// </summary>
-    public class RedisServer
+    public class RedisServer : IRedisServer
     {
         private readonly ConnectionMultiplexer _connectionMultiplexer;
 

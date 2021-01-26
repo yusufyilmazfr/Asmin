@@ -23,7 +23,7 @@ namespace Asmin.Packages.Caching.Redis.Extensions
 
             services.AddSingleton<IRedisCacheService, RedisCacheService>();
 
-            services.AddSingleton<RedisServer>();
+            services.AddSingleton<IRedisServer, RedisServer>();
 
             return services;
         }
