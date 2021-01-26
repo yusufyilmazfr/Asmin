@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Asmin.Packages.Cachings.Redis.Configuration;
+using Asmin.Packages.Caching.Redis.Configuration;
 using StackExchange.Redis;
 
-namespace Asmin.Packages.Cachings.Redis.Server
+namespace Asmin.Packages.Caching.Redis.Server
 {
     /// <summary>
     /// Redis Server

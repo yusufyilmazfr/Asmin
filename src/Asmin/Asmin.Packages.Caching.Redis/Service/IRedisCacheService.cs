@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Asmin.Packages.Cachings.Redis.Service
+﻿namespace Asmin.Packages.Caching.Redis.Service
 {
     /// <summary>
     /// Redis cache service interface provides some operations for Redis database

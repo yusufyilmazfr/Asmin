@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Asmin.Packages.Cachings.Redis.Configuration
+﻿namespace Asmin.Packages.Caching.Redis.Configuration
 {
     /// <summary>
     /// Redis server configuration 

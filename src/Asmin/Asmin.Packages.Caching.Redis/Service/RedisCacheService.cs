@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Asmin.Packages.Cachings.Redis.Server;
+using Asmin.Packages.Caching.Redis.Server;
 using Newtonsoft.Json;
 
-namespace Asmin.Packages.Cachings.Redis.Service
+namespace Asmin.Packages.Caching.Redis.Service
 {
     public class RedisCacheService : IRedisCacheService
     {

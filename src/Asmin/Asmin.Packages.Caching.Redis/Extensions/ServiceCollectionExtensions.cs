@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Asmin.Packages.Cachings.Redis.Configuration;
-using Asmin.Packages.Cachings.Redis.Server;
-using Asmin.Packages.Cachings.Redis.Service;
+using Asmin.Packages.Caching.Redis.Configuration;
+using Asmin.Packages.Caching.Redis.Server;
+using Asmin.Packages.Caching.Redis.Service;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Asmin.Packages.Cachings.Redis.Extensions
+namespace Asmin.Packages.Caching.Redis.Extensions
 {
     /// <summary>
     /// Add Redis cache service dependencies
