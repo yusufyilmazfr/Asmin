@@ -21,6 +21,7 @@ namespace Asmin.DataAccess.Extensions
         {
             services.AddSingleton<IUserDal, EfUserDal>();
             services.AddSingleton<IIncomingVisitorDal, EfIncomingVisitorDal>();
+            services.AddSingleton<IOperationClaimDal, EfOperationClaimDal>();
 
             return services;
         }
