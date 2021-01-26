@@ -25,6 +25,7 @@ namespace Asmin.Business.Extensions
         {
             services.AddSingleton<IUserManager, UserManager>();
             services.AddSingleton<IIncomingVisitorManager, IncomingVisitorManager>();
+            services.AddSingleton<IOperationClaimManager, OperationClaimManager>();
 
             services.AddSingleton<IValidator<User>, UserValidator>();
 
