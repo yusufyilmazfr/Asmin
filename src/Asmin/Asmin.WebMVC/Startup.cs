@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Asmin.Business.Extensions;
-using Asmin.Core.DependencyModules;
 using Asmin.Core.Extensions;
 using Asmin.Packages.AOP.InterceptModule;
 using Asmin.Packages.Hashing.MD5.Extensions;
