@@ -107,5 +107,19 @@ namespace Asmin.WebAPI.Controllers
 
             return Ok(checkUserRemoved);
         }
+
+        [HttpGet("{userId}/operation-claims")]
+        [AsminIgnoreTokenAuthFilter]
+        public IActionResult GetUserOperationClaims(int userId)
+        {
+            var claimsDataResult = _userManager.GetClaimsByUserId(userId);
+
+            if (!claimsDataResult.IsSuccess)
+            {
+                return BadRequest(claimsDataResult);
+            }
+
+            return Ok(claimsDataResult);
+        }
     }
 }
