@@ -62,10 +62,8 @@ namespace Asmin.WebAPI
 
             services.AddSwaggerGen();
 
-            services.AddDependencyModules(new ICoreModule[]
-            {
-                new MemoryCacheModule()
-            });
+            // Register core module. 🎉
+            services.AddCoreModule();
 
             // Register business module. 🎉
             services.AddBusinessModule();
@@ -73,6 +71,7 @@ namespace Asmin.WebAPI
             // Register MD5 module. 🎉
             services.AddMD5();
 
+            // Register JWT module. 🎉
             services.AddJWT(configuration =>
             {
                 configuration.SecretKey = AsminConfigurationContext.JWTKey;

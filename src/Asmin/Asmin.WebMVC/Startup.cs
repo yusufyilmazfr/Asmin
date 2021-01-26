@@ -50,8 +50,6 @@ namespace Asmin.WebMVC
         {
             services.AddHttpContextAccessor();
 
-            services.AddDistributedMemoryCache();
-
             services.AddSession();
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -60,12 +58,10 @@ namespace Asmin.WebMVC
 
             services.AddControllersWithViews();
 
-            services.AddDependencyModules(new ICoreModule[]
-            {
-                new MemoryCacheModule(),
-            });
-
             services.AddSingleton<ISessionService, SessionService>();
+
+            // Register core module. 🎉
+            services.AddCoreModule();
 
             // Register business module. 🎉
             services.AddBusinessModule();
