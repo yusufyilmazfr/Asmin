@@ -17,9 +17,12 @@ namespace Asmin.Packages.Caching.Redis.Extensions
         /// <param name="services">IServiceCollection instance</param>
         /// <param name="configuration">RedisConfiguration instance</param>
         /// <returns></returns>
-        public static IServiceCollection AddRedis(this IServiceCollection services, Func<RedisConfiguration> configuration)
+        public static IServiceCollection AddRedis(this IServiceCollection services, Action<IRedisConfiguration> configuration)
         {
-            services.AddSingleton(typeof(IRedisConfiguration), configuration.Invoke());
+            IRedisConfiguration redisConfiguration = new RedisConfiguration();
+            configuration.Invoke(redisConfiguration);
+
+            services.AddSingleton<IRedisConfiguration>(redisConfiguration);
 
             services.AddSingleton<IRedisCacheService, RedisCacheService>();
 
