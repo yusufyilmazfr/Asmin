@@ -14,7 +14,7 @@ namespace Asmin.Packages.RabbitMQ.Service
         /// <summary>
         /// RabbitMQ configuration property.
         /// </summary>
-        private IRabbitMQConfiguration _rabbitMqConfiguration;
+        private readonly IRabbitMQConfiguration _rabbitMqConfiguration;
 
         /// <summary>
         /// Constructor based dependency injection.
