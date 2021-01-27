@@ -8,7 +8,7 @@ using Castle.DynamicProxy;
 namespace Asmin.Packages.AOP.Aspects.Transaction
 {
     /// <summary>
-    /// AsminUnitOfWorkAspect works when method is work unsuccessfully. Throws expected exception after transaction.
+    /// AsminUnitOfWorkAspect works when method did not work successfully. Throws expected exception after transaction.
     /// </summary>
     public class AsminUnitOfWorkAspect : MethodInterceptor
     {
