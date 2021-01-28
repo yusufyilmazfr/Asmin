@@ -29,5 +29,7 @@ namespace Asmin.Core.Configuration.Context
         string JWTIssuer { get; set; }
         string JWTAudience { get; set; }
         int JWTExpiryHour { get; set; }
+
+        string ApiUrl { get; set; }
     }
 }

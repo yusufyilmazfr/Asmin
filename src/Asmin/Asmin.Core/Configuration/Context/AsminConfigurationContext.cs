@@ -29,6 +29,8 @@ namespace Asmin.Core.Configuration.Context
         public string JWTAudience { get; set; }
         public int JWTExpiryHour { get; set; }
 
+        public string ApiUrl { get; set; }
+
         public AsminConfigurationContext(IEnvironmentService environmentService)
         {
             RedisHost = environmentService.Configuration["Redis:Host"];
@@ -51,6 +53,8 @@ namespace Asmin.Core.Configuration.Context
             JWTIssuer = environmentService.Configuration["JWT:Issuer"];
             JWTAudience = environmentService.Configuration["JWT:Audience"];
             JWTExpiryHour = int.Parse(environmentService.Configuration["JWT:ExpiryHour"]);
+
+            ApiUrl = environmentService.Configuration["ApiUrl"];
         }
     }
 }

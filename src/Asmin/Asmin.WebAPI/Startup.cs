@@ -61,6 +61,8 @@ namespace Asmin.WebAPI
 
             services.AddSwaggerGen();
 
+            services.AddCors();
+
             // Register core module. 🎉
             services.AddCoreModule();
 
@@ -100,6 +102,14 @@ namespace Asmin.WebAPI
             app.UseAPIExceptionMiddleware();
 
             app.UseHttpsRedirection();
+
+            app.UseCors(builder =>
+            {
+                builder
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+            });
 
             app.UseRouting();
 
