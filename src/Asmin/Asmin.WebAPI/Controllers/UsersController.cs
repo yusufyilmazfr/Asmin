@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Asmin.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     [TypeFilter(typeof(AsminTokenAuthFilter))]
     public class UsersController : ControllerBase

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Asmin.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class OperationClaimsController : ControllerBase
     {
