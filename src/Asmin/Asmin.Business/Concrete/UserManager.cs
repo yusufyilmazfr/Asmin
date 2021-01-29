@@ -117,8 +117,12 @@ namespace Asmin.Business.Concrete
                 return new ErrorDataResult<UserLoginResponse>(userLoginResponse, ResultMessages.UserNotFound);
             }
 
+            var tokenResult = _tokenService.Generate(GenerateUserClaims(user));
+
             userLoginResponse.User = user;
-            userLoginResponse.TokenInformation = _tokenService.Generate(GenerateUserClaims(user));
+
+            userLoginResponse.TokenInformation.ExpiryDate = tokenResult.ExpiryDate;
+            userLoginResponse.TokenInformation.Token = tokenResult.Token;
 
             return new SuccessDataResult<UserLoginResponse>(userLoginResponse);
         }

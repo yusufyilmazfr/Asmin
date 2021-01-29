@@ -1,7 +1,7 @@
-﻿using Asmin.Packages.JWT.Result;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Asmin.Entities.CustomEntities.Response.Token;
 
 namespace Asmin.Entities.CustomEntities.Response.User
 {
@@ -17,6 +17,11 @@ namespace Asmin.Entities.CustomEntities.Response.User
         /// <summary>
         /// Token information. It contains token, expiry date.
         /// </summary>
-        public GenerateTokenResult TokenInformation { get; set; }
+        public TokenInformation TokenInformation { get; set; }
+
+        public UserLoginResponse()
+        {
+            TokenInformation = new TokenInformation();
+        }
     }
 }
