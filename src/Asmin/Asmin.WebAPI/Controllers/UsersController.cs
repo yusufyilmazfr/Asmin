@@ -55,7 +55,6 @@ namespace Asmin.WebAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        [TypeFilter(typeof(AsminTokenAuthFilter))]
         public async Task<IActionResult> GetById(int id)
         {
             var userDataResult = await _userManager.GetByIdAsync(id);
@@ -108,8 +107,21 @@ namespace Asmin.WebAPI.Controllers
             return Ok(checkUserRemoved);
         }
 
+        [HttpGet]
+        [Route("count")]
+        public async Task<IActionResult> GetCount()
+        {
+            var checkUsersCount = await _userManager.GetCountAsync();
+
+            if (!checkUsersCount.IsSuccess)
+            {
+                return BadRequest(checkUsersCount);
+            }
+
+            return Ok(checkUsersCount);
+        }
+
         [HttpGet("{userId}/operation-claims")]
-        [AsminIgnoreTokenAuthFilter]
         public IActionResult GetUserOperationClaims(int userId)
         {
             var claimsDataResult = _userManager.GetClaimsByUserId(userId);
