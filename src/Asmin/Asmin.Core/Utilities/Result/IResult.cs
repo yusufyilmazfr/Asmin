@@ -12,10 +12,10 @@ namespace Asmin.Core.Utilities.Result
         /// <summary>
         /// Check method done successfully.
         /// </summary>
-        bool IsSuccess { get; }
+        bool IsSuccess { get; set; }
         /// <summary>
         /// Result message.
         /// </summary>
-        string Message { get; }
+        string Message { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Asmin.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class OperationClaimsController : ControllerBase
     {
@@ -21,7 +21,6 @@ namespace Asmin.WebAPI.Controllers
         }
 
         [HttpGet]
-        [AsminIgnoreTokenAuthFilter]
         public async Task<IActionResult> Index()
         {
             var operationClaimsResult = await _operationClaimManager.GetClaimsAsync();

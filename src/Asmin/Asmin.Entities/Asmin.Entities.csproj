@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Asmin.Core\Asmin.Core.csproj" />
-    <ProjectReference Include="..\Asmin.Packages.JWT\Asmin.Packages.JWT.csproj" />
   </ItemGroup>
 
 </Project>

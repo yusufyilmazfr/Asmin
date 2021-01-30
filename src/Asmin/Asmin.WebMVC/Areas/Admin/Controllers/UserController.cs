@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Asmin.Business.Abstract;
+﻿using System.Threading.Tasks;
 using Asmin.WebMVC.Filters;
+using Asmin.WebMVC.Services.Rest.UserService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Asmin.WebMVC.Areas.Admin.Controllers
@@ -12,16 +9,16 @@ namespace Asmin.WebMVC.Areas.Admin.Controllers
     [TypeFilter(typeof(CheckSessionFilter))]
     public class UserController : Controller
     {
-        private IUserManager _userManager;
+        private readonly IUserApiService _userApiService;
 
-        public UserController(IUserManager userManager)
+        public UserController(IUserApiService userApiService)
         {
-            _userManager = userManager;
+            _userApiService = userApiService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var usersResult = await _userManager.GetListAsync();
+            var usersResult = await _userApiService.GetListAsync();
 
             return View(usersResult.Data);
         }

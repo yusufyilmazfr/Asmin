@@ -13,6 +13,6 @@ namespace Asmin.Core.Utilities.Result
         /// <summary>
         /// Return data.
         /// </summary>
-        T Data { get; }
+        T Data { get; set; }
     }
 }

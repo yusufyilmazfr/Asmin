@@ -12,7 +12,7 @@ namespace Asmin.Packages.AOP.Interceptor
         /// </summary>
         public int Priority { get; set; }
         /// <summary>
-        /// Intercept defined method
+        /// Intercept method
         /// </summary>
         /// <param name="invocation"></param>
         public abstract void Intercept(IInvocation invocation);

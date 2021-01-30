@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Asmin.Core.Utilities.Result
 {
-    public abstract class Result : IResult
+    public class Result : IResult
     {
         public Result(bool isSuccess)
         {
@@ -16,8 +16,13 @@ namespace Asmin.Core.Utilities.Result
             Message = message;
         }
 
-        public bool IsSuccess { get; }
+        public Result()
+        {
 
-        public string Message { get; }
+        }
+
+        public bool IsSuccess { get; set; }
+
+        public string Message { get; set; }
     }
 }
