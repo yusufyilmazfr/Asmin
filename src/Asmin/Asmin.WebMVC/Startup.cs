@@ -2,6 +2,7 @@
 using Asmin.Core.Configuration.Environment;
 using Asmin.Core.Extensions;
 using Asmin.WebMVC.Extensions;
+using Asmin.WebMVC.Services.Rest.Base;
 using Asmin.WebMVC.Services.Rest.IncomingVisitorService;
 using Asmin.WebMVC.Services.Rest.UserService;
 using Asmin.WebMVC.Services.Session;
@@ -37,6 +38,7 @@ namespace Asmin.WebMVC
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
             services.AddSingleton<ISessionService, SessionService>();
+            services.AddTransient<IHttpService, HttpService>();
 
             services.AddSingleton<IUserApiService, UserApiService>();
             services.AddSingleton<IIncomingVisitorApiService, IncomingVisitorApiService>();
