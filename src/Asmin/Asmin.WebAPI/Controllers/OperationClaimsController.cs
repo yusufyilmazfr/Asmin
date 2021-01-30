@@ -21,7 +21,6 @@ namespace Asmin.WebAPI.Controllers
         }
 
         [HttpGet]
-        [AsminIgnoreTokenAuthFilter]
         public async Task<IActionResult> Index()
         {
             var operationClaimsResult = await _operationClaimManager.GetClaimsAsync();
