@@ -1,10 +1,7 @@
-﻿using Asmin.Business.Abstract;
-using Asmin.Entities.Concrete;
+﻿using Asmin.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Asmin.WebMVC.Services.Rest.IncomingVisitorService;
 
 namespace Asmin.WebMVC.Middleware
 {
@@ -14,16 +11,16 @@ namespace Asmin.WebMVC.Middleware
     public class IncomingVisitorCounter
     {
         private readonly RequestDelegate _next;
-        private readonly IIncomingVisitorManager _incomingVisitorManager;
+        private readonly IIncomingVisitorApiService _incomingVisitorApiService;
 
-        public IncomingVisitorCounter(RequestDelegate next, IIncomingVisitorManager incomingVisitorManager)
+        public IncomingVisitorCounter(RequestDelegate next, IIncomingVisitorApiService incomingVisitorApiService)
         {
             _next = next;
-            _incomingVisitorManager = incomingVisitorManager;
+            _incomingVisitorApiService = incomingVisitorApiService;
         }
 
         /// <summary>
-        /// Request invocation. You can use any queue mechanism for async operation. It uses database by default.
+        /// Request invocation. You can use any queue mechanism for async operation. It uses api by default.
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
@@ -34,7 +31,7 @@ namespace Asmin.WebMVC.Middleware
                 IpAddress = context.Connection.RemoteIpAddress.ToString()
             };
 
-            await _incomingVisitorManager.AddAsync(visitor);
+            _ = _incomingVisitorApiService.AddAsync(visitor);
 
             await _next(context);
         }

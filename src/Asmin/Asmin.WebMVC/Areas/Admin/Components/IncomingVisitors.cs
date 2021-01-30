@@ -1,24 +1,21 @@
-﻿using Asmin.Business.Abstract;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Asmin.WebMVC.Services.Rest.IncomingVisitorService;
 
 namespace Asmin.WebMVC.Areas.Admin.Components
 {
     public class IncomingVisitors : ViewComponent
     {
-        private readonly IIncomingVisitorManager _incomingVisitorManager;
+        private readonly IIncomingVisitorApiService _incomingVisitorApiService;
 
-        public IncomingVisitors(IIncomingVisitorManager incomingVisitorManager)
+        public IncomingVisitors(IIncomingVisitorApiService incomingVisitorApiService)
         {
-            _incomingVisitorManager = incomingVisitorManager;
+            _incomingVisitorApiService = incomingVisitorApiService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var visitorsCountResult = await _incomingVisitorManager.GetCountAsync();
+            var visitorsCountResult = await _incomingVisitorApiService.GetCountAsync();
 
             return View(visitorsCountResult.Data);
         }
