@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Asmin.Core.Utilities.Result
 {
-    public abstract class DataResult<T> : Result, IDataResult<T>
+    public class DataResult<T> : Result, IDataResult<T>
     {
         public DataResult(T data, bool isSuccess) : base(isSuccess)
         {
@@ -16,6 +16,11 @@ namespace Asmin.Core.Utilities.Result
             Data = data;
         }
 
-        public T Data { get; }
+        public DataResult()
+        {
+
+        }
+
+        public T Data { get; set; }
     }
 }

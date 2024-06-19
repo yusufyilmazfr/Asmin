@@ -6,10 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Asmin.Business\Asmin.Business.csproj" />
+    <ProjectReference Include="..\Asmin.Packages.AOP\Asmin.Packages.AOP.csproj" />
+    <ProjectReference Include="..\Asmin.Packages.Hashing.MD5\Asmin.Packages.Hashing.MD5.csproj" />
   </ItemGroup>
 
 

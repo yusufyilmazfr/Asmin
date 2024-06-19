@@ -6,7 +6,10 @@ using System.Text;
 
 namespace Asmin.DataAccess.Abstract
 {
-    public interface IIncomingVisitorDal : IRepository<IncomingVisitor>
+    /// <summary>
+    /// Incoming visitor repository interface.
+    /// </summary>
+    public interface IIncomingVisitorDal : IRepository<IncomingVisitor, int>
     {
 
     }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Asmin.Business\Asmin.Business.csproj" />
     <ProjectReference Include="..\Asmin.Core\Asmin.Core.csproj" />
     <ProjectReference Include="..\Asmin.Entities\Asmin.Entities.csproj" />
   </ItemGroup>

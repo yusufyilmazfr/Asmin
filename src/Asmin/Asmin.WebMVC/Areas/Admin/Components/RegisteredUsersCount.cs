@@ -1,26 +1,23 @@
-﻿using Asmin.Business.Abstract;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Asmin.WebMVC.Services.Rest.UserService;
 
 namespace Asmin.WebMVC.Areas.Admin.Components
 {
     public class RegisteredUsersCount : ViewComponent
     {
-        private IUserManager _userManager;
+        private readonly IUserApiService _userApiService;
 
-        public RegisteredUsersCount(IUserManager userManager)
+        public RegisteredUsersCount(IUserApiService userApiService)
         {
-            _userManager = userManager;
+            _userApiService = userApiService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var usersCountResul = await _userManager.GetCountAsync();
+            var usersCountResult = await _userApiService.GetCountAsync();
 
-            return View(usersCountResul.Data);
+            return View(usersCountResult.Data);
         }
     }
 }

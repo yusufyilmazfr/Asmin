@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Asmin.Business.DependencyModules.Autofac;
-using Asmin.Core.DependencyModules;
+﻿using Asmin.Core.Configuration.Context;
+using Asmin.Core.Configuration.Environment;
 using Asmin.Core.Extensions;
 using Asmin.WebMVC.Extensions;
+using Asmin.WebMVC.Services.Rest.Base;
+using Asmin.WebMVC.Services.Rest.IncomingVisitorService;
+using Asmin.WebMVC.Services.Rest.UserService;
 using Asmin.WebMVC.Services.Session;
-using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,27 +19,17 @@ namespace Asmin.WebMVC
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
-
-        public void ConfigureContainer(ContainerBuilder builder)
-        {
-            // Add any Autofac modules or registrations.
-            // This is called AFTER ConfigureServices so things you
-            // register here OVERRIDE things registered in ConfigureServices.
-            //
-            // You must have the call to `UseServiceProviderFactory(new AutofacServiceProviderFactory())`
-            // when building the host or this won't be called.
-            builder.RegisterModule(new AutofacDependencyModule());
+            AsminConfigurationContext = new AsminConfigurationContext(new EnvironmentService());
         }
 
         public IConfiguration Configuration { get; }
+        public IAsminConfigurationContext AsminConfigurationContext { get; }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpContextAccessor();
-
-            services.AddDistributedMemoryCache();
 
             services.AddSession();
 
@@ -50,15 +37,16 @@ namespace Asmin.WebMVC
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
-            services.AddControllersWithViews();
-
-            services.AddDependencyModules(new ICoreModule[]
-            {
-                new MemoryCacheModule(),
-                new MD5HashModule()
-            });
-
             services.AddSingleton<ISessionService, SessionService>();
+            services.AddTransient<IHttpService, HttpService>();
+
+            services.AddSingleton<IUserApiService, UserApiService>();
+            services.AddSingleton<IIncomingVisitorApiService, IncomingVisitorApiService>();
+
+            services.AddHttpClient();
+
+            // Register core module. 🎉
+            services.AddCoreModule();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +56,7 @@ namespace Asmin.WebMVC
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
@@ -77,13 +65,13 @@ namespace Asmin.WebMVC
 
             app.UseRouting();
 
+            // Use incoming visitor counter. 🎉
             app.UseWhen(context => context.Request.Path.StartsWithSegments("/admin") == false, appBuilder =>
             {
                 appBuilder.UseIncomingVisitorCounter();
             });
 
-            app.UseUserClaimsCarrierMiddleware();
-
+            // Use exception middleware. 🎉
             app.UseMVCExceptionMiddleware("/Home/Error");
 
             app.UseMvc(routes =>

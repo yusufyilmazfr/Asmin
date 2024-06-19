@@ -6,26 +6,36 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Asmin.Core.Configuration.Context;
 
 namespace Asmin.DataAccess.Concrete.EntityFramework
 {
-    public class EfUserDal : EfRepositoryBase<User, AsminDbContext>, IUserDal
+    public class EfUserDal : EfRepositoryBase<User, int>, IUserDal
     {
+        private readonly IAsminConfigurationContext _asminConfigurationContext;
+
+        public EfUserDal(IAsminConfigurationContext asminConfigurationContext) : base(asminConfigurationContext.ConnectionString)
+        {
+            _asminConfigurationContext = asminConfigurationContext;
+        }
+
         public List<OperationClaim> GetClaimsByUserId(int id)
         {
-            using (AsminDbContext context = new AsminDbContext())
+            using (AsminDbContext context = new AsminDbContext(_asminConfigurationContext.ConnectionString))
             {
-                var result = from operationClaim in context.OperationClaims
-                             join userOperationClaim in context.UserOperationClaims
-                             on operationClaim.Id equals userOperationClaim.OperationClaimId
-                             where userOperationClaim.UserId == id
-                             select new OperationClaim
-                             {
-                                 Id = operationClaim.Id,
-                                 Name = operationClaim.Name
-                             };
+                return context
+                    .UserOperationClaims
+                        .Where(userOperationClaim => userOperationClaim.UserId == id)
+                    .Select(userOperationClaim => userOperationClaim.OperationClaim)
+                    .ToList();
+            }
+        }
 
-                return result.ToList();
+        public User GetUser(string email, string password)
+        {
+            using (var context = new AsminDbContext(_asminConfigurationContext.ConnectionString))
+            {
+                return context.Users.FirstOrDefault(user => user.Email == email && user.Password == password);
             }
         }
     }

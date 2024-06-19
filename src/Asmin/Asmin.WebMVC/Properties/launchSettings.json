@@ -1,26 +1,39 @@
-﻿{
+{
   "iisSettings": {
-    "windowsAuthentication": false, 
-    "anonymousAuthentication": true, 
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Asmin.WebMVC",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:59283",
       "sslPort": 44345
     }
   },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
+    "Development": {
+      "commandName": "Project",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASMIN_ENVIRONMENT": "development"
       }
     },
-    "Asmin.WebMVC": {
+    "Staging": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASMIN_ENVIRONMENT": "staging"
+      }
+    },
+    "Test": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASMIN_ENVIRONMENT": "test"
+      }
+    },
+    "Production": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASMIN_ENVIRONMENT": "production"
       }
     }
   }

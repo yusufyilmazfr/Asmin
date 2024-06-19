@@ -4,10 +4,25 @@ using System.Text;
 
 namespace Asmin.Core.Entities.Concrete
 {
-    public abstract class BaseEntity
+    /// <summary>
+    /// BaseEntity provides common properties to database entities.
+    /// </summary>
+    /// <typeparam name="TKey">Unique key.</typeparam>
+    public abstract class BaseEntity<TKey>
     {
-        public int Id { get; set; }
+        /// <summary>
+        /// Generic unique key.
+        /// </summary>
+        public TKey Id { get; set; }
+
+        /// <summary>
+        /// Date of entity creation.
+        /// </summary>
         public DateTime CreatedDate { get; set; }
+
+        /// <summary>
+        /// Date of last modification.
+        /// </summary>
         public DateTime ModifiedDate { get; set; }
     }
 }

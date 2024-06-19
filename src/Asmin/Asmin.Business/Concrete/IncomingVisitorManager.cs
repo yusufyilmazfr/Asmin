@@ -12,7 +12,7 @@ namespace Asmin.Business.Concrete
 {
     public class IncomingVisitorManager : IIncomingVisitorManager
     {
-        private IIncomingVisitorDal _incomingVisitorDal;
+        private readonly IIncomingVisitorDal _incomingVisitorDal;
 
         public IncomingVisitorManager(IIncomingVisitorDal incomingVisitorDal)
         {
@@ -21,7 +21,7 @@ namespace Asmin.Business.Concrete
 
         public async Task<IResult> AddAsync(IncomingVisitor incomingVisitor)
         {
-            await _incomingVisitorDal.AddAsnyc(incomingVisitor);
+            await _incomingVisitorDal.AddAsync(incomingVisitor);
             return new SuccessResult(ResultMessages.IncomingVisitorAdded);
         }
 
